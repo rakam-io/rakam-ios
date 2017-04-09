@@ -1,6 +1,4 @@
 machine:
-  xcode:
-    version: 8.4
   environment:
     # CocoaPods versions greater than 0.34 require
     # your terminal to be using UTF-8 encoding.
@@ -12,3 +10,17 @@ dependencies:
     # between different versions of CocoaPods.
     - pod setup
     - pod install
+test:
+  override:
+    - xctool
+      -reporter pretty
+      -reporter junit:$CIRCLE_TEST_REPORTS/xcode/results.xml
+      -reporter plain:$CIRCLE_ARTIFACTS/xctool.log
+      CODE_SIGNING_REQUIRED=NO
+      CODE_SIGN_IDENTITY=
+      PROVISIONING_PROFILE=
+      -destination 'platform=iOS Simulator,name=iPhone 7,OS=latest'
+      -sdk iphonesimulator
+      -workspace Amplitude.xcworkspace
+      -scheme "AmplitudeTests"
+      build build-tests run-tests

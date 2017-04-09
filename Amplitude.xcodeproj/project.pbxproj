@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		070D5B4E1E9AAA8D0008BD5D /* libOCMock-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 070D5B4C1E9AA9B60008BD5D /* libOCMock-iOS.a */; };
+		070D5B4F1E9AAB3C0008BD5D /* libOCMock-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 070D5B4C1E9AA9B60008BD5D /* libOCMock-iOS.a */; };
+		070D5B501E9AAB410008BD5D /* libOCMock-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 070D5B4C1E9AA9B60008BD5D /* libOCMock-iOS.a */; };
 		343AB41A1CC99F4F00962943 /* AmplitudeFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 343AB4191CC99F4F00962943 /* AmplitudeFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		343AB41F1CC99FB500962943 /* RakamConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC708591AD4B28300949778 /* RakamConstants.m */; };
 		343AB4201CC99FB800962943 /* RakamDatabaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 60BA92721C2376680043178E /* RakamDatabaseHelper.m */; };
@@ -149,6 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				070D5B501E9AAB410008BD5D /* libOCMock-iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				070D5B4F1E9AAB3C0008BD5D /* libOCMock-iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

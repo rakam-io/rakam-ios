@@ -127,6 +127,7 @@
 		C1E203B94A494052A38E53DF /* libPods-AmplitudeTVOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AmplitudeTVOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7280F441D655B9900CF13D4 /* Amplitude.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = Amplitude.modulemap; sourceTree = "<group>"; };
 		DB9AFF397E54853B1A74287D /* libPods-AmplitudeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AmplitudeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3FB57CBB976024803ACB495 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = file.yml; path = .travis.yml; sourceTree = "<group>"; };
 		E93C8C541A59B3B9001339A5 /* RakamLocationManagerDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RakamLocationManagerDelegateTests.m; sourceTree = "<group>"; };
 		E96785E11A48E93F00887CCD /* RakamARCMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RakamARCMacros.h; sourceTree = "<group>"; };
 		E96785E21A48E93F00887CCD /* RakamConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RakamConstants.h; sourceTree = "<group>"; };
@@ -225,6 +226,7 @@
 				E98C05241A48E7FE00800C63 /* Products */,
 				DA44019A1FBCE41A7F8C6968 /* Pods */,
 				9D55C176B7CB02D142328C19 /* Frameworks */,
+				E3FB57CBB976024803ACB495 /* .travis.yml */,
 			);
 			sourceTree = "<group>";
 		};

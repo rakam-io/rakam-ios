@@ -1,0 +1,13 @@
+language: objective-c
+osx_image: xcode7.3
+
+env:
+  - LC_CTYPE=en_US.UTF-8 LANG=en_US.UTF-8
+before_install:
+  - sudo gem install cocoapods --version 0.38.2
+    - pod setup
+    - pod install
+script:
+  - set -o pipefail
+  - xcodebuild -workspace Amplitude.xcworkspace -scheme Amplitude -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
+  - swiftlint 

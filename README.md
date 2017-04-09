@@ -2,17 +2,17 @@ Rakam iOS SDK
 ====================
 An iOS SDK for tracking events and revenue to [Rakam](http://www.amplitude.com).
 
-[![Circle CI](https://circleci.com/gh/amplitude/Rakam-iOS.svg?style=shield&circle-token=e1b2a7d2cd6dd64ac3643bc8cb2117c0ed5cbb75)](https://circleci.com/gh/amplitude/Rakam-iOS/tree/master)
-[![CocoaPods](https://img.shields.io/cocoapods/v/Rakam-iOS.svg?style=flat)](http://cocoadocs.org/docsets/Rakam-iOS/)
+[![Circle CI](https://circleci.com/gh/rakam-io/rakam-ios.svg?style=shield&circle-token=e1b2a7d2cd6dd64ac3643bc8cb2117c0ed5cbb75)](https://circleci.com/gh/amplitude/Rakam-iOS/tree/master)
+[![CocoaPods](https://img.shields.io/cocoapods/v/rakam-ios.svg?style=flat)](http://cocoadocs.org/docsets/Rakam-iOS/)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-A [demo application](https://github.com/amplitude/iOS-Demo) is available to show a simple integration.
+A [demo application](https://github.com/rakam-io/iOS-Demo) is available to show a simple integration.
 
-A [demo application](https://github.com/amplitude/iOS-Extension-Demo) is available to show a simple integration in iOS extensions.
+A [demo application](https://github.com/rakam-io/iOS-Extension-Demo) is available to show a simple integration in iOS extensions.
 
-See our [SDK documentation](https://rawgit.com/amplitude/Rakam-iOS/v3.14.0/documentation/html/index.html) for a description of all available SDK methods and classes.
+See our [SDK documentation](https://rawgit.com/rakam-io/rakam-ios/v3.14.0/documentation/html/index.html) for a description of all available SDK methods and classes.
 
-Our iOS SDK also supports tvOS. See [below](https://github.com/amplitude/Rakam-iOS#tvos) for more information.
+Our iOS SDK also supports tvOS. See [below](https://github.com/rakam-io/Rakam-ios#tvos) for more information.
 
 # Setup #
 1. If you haven't already, go to https://amplitude.com and register for an account. You will receive an API Key.

@@ -220,7 +220,7 @@
     XCTAssertEqual([self.amplitude userId], nil);
 
     NSString *testUserId = @"testUserId";
-    [self.amplitude initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] : apiKey userId:testUserId];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"hhttp://127.0.0.1:9998"] : apiKey userId:testUserId];
     [self.amplitude flushQueue];
     XCTAssertEqual([self.amplitude userId], nil);
 }
@@ -687,7 +687,7 @@
     XCTAssertTrue([self.amplitude archive:event toFile:archiveName]);
 
     NSDictionary *unarchived = [self.amplitude unarchive:archiveName];
-    if (floor(NSFoundationVersionNumber) > 1144.17) {
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_8_4) {
         XCTAssertEqualObjects(unarchived, event);
     } else {
         XCTAssertNil(unarchived);

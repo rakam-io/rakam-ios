@@ -5,6 +5,7 @@ machine:
     # CocoaPods versions greater than 0.34 require
     # your terminal to be using UTF-8 encoding.
     LANG: en_US.UTF-8
+    GYM_CODE_SIGNING_IDENTITY: "iPhone Developer: emrekabakci@gmail.com (GPR57277UG)"
 dependencies:
   pre:
     - sudo gem install cocoapods --version 0.38.2
@@ -19,7 +20,7 @@ test:
       -reporter junit:$CIRCLE_TEST_REPORTS/xcode/results.xml
       -reporter plain:$CIRCLE_ARTIFACTS/xctool.log
       CODE_SIGNING_REQUIRED=NO
-      CODE_SIGN_IDENTITY=
+      CODE_SIGN_IDENTITY=""
       PROVISIONING_PROFILE=
       -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
       -sdk iphonesimulator

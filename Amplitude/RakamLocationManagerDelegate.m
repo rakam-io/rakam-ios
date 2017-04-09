@@ -1,10 +1,10 @@
 //
-//  AMPLocationManagerDelegate.m
+//  RakamLocationManagerDelegate.m
 
-#import "AMPLocationManagerDelegate.h"
-#import "Amplitude.h"
+#import "RakamLocationManagerDelegate.h"
+#import "Rakam.h"
 
-@implementation AMPLocationManagerDelegate
+@implementation RakamLocationManagerDelegate
 
 
 - (void)locationManager:(CLLocationManager*) manager didFailWithError:(NSError*) error
@@ -25,7 +25,7 @@
     if (status == kCLAuthorizationStatusAuthorized) {
 #endif
         SEL updateLocation = NSSelectorFromString(@"updateLocation");
-        [Amplitude performSelector:updateLocation];
+        [Rakam performSelector:updateLocation];
     }
 }
 

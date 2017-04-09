@@ -1,20 +1,20 @@
 //
-//  AMPDeviceInfo.m
+//  RakamDeviceInfo.m
 
 #import <Foundation/Foundation.h>
-#import "AMPARCMacros.h"
-#import "AMPDeviceInfo.h"
-#import "AMPUtils.h"
-#import "AMPConstants.h"
+#import "RakamARCMacros.h"
+#import "RakamDeviceInfo.h"
+#import "RakamUtils.h"
+#import "RakamConstants.h"
 #import <UIKit/UIKit.h>
 #import <sys/sysctl.h>
 
 #include <sys/types.h>
 
-@interface AMPDeviceInfo ()
+@interface RakamDeviceInfo ()
 @end
 
-@implementation AMPDeviceInfo {
+@implementation RakamDeviceInfo {
     NSObject* networkInfo;
 }
 
@@ -55,7 +55,7 @@
 }
 
 -(NSString*) osName {
-    return kAMPOSName;
+    return kRKMOSName;
 }
 
 -(NSString*) osVersion {
@@ -71,7 +71,7 @@
 
 -(NSString*) model {
     if (!_model) {
-        _model = SAFE_ARC_RETAIN([AMPDeviceInfo getPhoneModel]);
+        _model = SAFE_ARC_RETAIN([RakamDeviceInfo getPhoneModel]);
     }
     return _model;
 }
@@ -120,7 +120,7 @@
 -(NSString*) advertiserID {
     if (!_advertiserID) {
         if ([[[UIDevice currentDevice] systemVersion] floatValue] >= (float) 6.0) {
-            NSString *advertiserId = [AMPDeviceInfo getAdvertiserID:5];
+            NSString *advertiserId = [RakamDeviceInfo getAdvertiserID:5];
             if (advertiserId != nil &&
                 ![advertiserId isEqualToString:@"00000000-0000-0000-0000-000000000000"]) {
                 _advertiserID = SAFE_ARC_RETAIN(advertiserId);
@@ -133,7 +133,7 @@
 -(NSString*) vendorID {
     if (!_vendorID) {
         if ([[[UIDevice currentDevice] systemVersion] floatValue] >= (float) 6.0) {
-            NSString *identifierForVendor = [AMPDeviceInfo getVendorID:5];
+            NSString *identifierForVendor = [RakamDeviceInfo getVendorID:5];
             if (identifierForVendor != nil &&
                 ![identifierForVendor isEqualToString:@"00000000-0000-0000-0000-000000000000"]) {
                 _vendorID = SAFE_ARC_RETAIN(identifierForVendor);
@@ -166,7 +166,7 @@
         if (identifier == nil && maxAttempts > 0) {
             // Try again every 5 seconds
             [NSThread sleepForTimeInterval:5.0];
-            return [AMPDeviceInfo getAdvertiserID:maxAttempts - 1];
+            return [RakamDeviceInfo getAdvertiserID:maxAttempts - 1];
         } else {
             return identifier;
         }
@@ -181,7 +181,7 @@
     if (identifier == nil && maxAttempts > 0) {
         // Try again every 5 seconds
         [NSThread sleepForTimeInterval:5.0];
-        return [AMPDeviceInfo getVendorID:maxAttempts - 1];
+        return [RakamDeviceInfo getVendorID:maxAttempts - 1];
     } else {
         return identifier;
     }
@@ -190,7 +190,7 @@
 + (NSString*)generateUUID
 {
     // Add "R" at the end of the ID to distinguish it from advertiserId
-    NSString *result = [[AMPUtils generateUUID] stringByAppendingString:@"R"];
+    NSString *result = [[RakamUtils generateUUID] stringByAppendingString:@"R"];
     return result;
 }
 

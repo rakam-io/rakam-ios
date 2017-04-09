@@ -1,17 +1,17 @@
 //
-//  AMPDatabaseHelper.h
-//  Amplitude
+//  RakamDatabaseHelper.h
+//  Rakam
 //
 //  Created by Daniel Jih on 9/9/15.
-//  Copyright (c) 2015 Amplitude. All rights reserved.
+//  Copyright (c) 2015 Rakam. All rights reserved.
 //
 
-@interface AMPDatabaseHelper : NSObject
+@interface RakamDatabaseHelper : NSObject
 
 @property (nonatomic, strong, readonly) NSString *databasePath;
 
-+ (AMPDatabaseHelper*)getDatabaseHelper;
-+ (AMPDatabaseHelper*)getDatabaseHelper:(NSString*) instanceName;
++ (RakamDatabaseHelper*)getDatabaseHelper;
++ (RakamDatabaseHelper*)getDatabaseHelper:(NSString*) instanceName;
 - (BOOL)createTables;
 - (BOOL)dropTables;
 - (BOOL)upgrade:(int) oldVersion newVersion:(int) newVersion;

@@ -1,10 +1,10 @@
 //
-//  AMPLocationManagerDelegate.h
+//  RakamLocationManagerDelegate.h
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface AMPLocationManagerDelegate : NSObject <CLLocationManagerDelegate>
+@interface RakamLocationManagerDelegate : NSObject <CLLocationManagerDelegate>
 
 - (void)locationManager:(CLLocationManager*) manager didFailWithError:(NSError*) error;
 

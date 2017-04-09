@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>AMPIdentify Class Reference</title>
+	<title>RakamIdentify Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -14,11 +14,11 @@
 		<div class="container" class="hide-in-xcode">
 			
 			<h1 id="library-title">
-				<a href="../index.html">Amplitude-iOS </a>
+				<a href="../index.html">Rakam-iOS </a>
 			</h1>
 
 			<p id="developer-home">
-				<a href="../index.html">Amplitude</a>
+				<a href="../index.html">Rakam</a>
 			</p>
 			
 		</div>
@@ -93,7 +93,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">AMPIdentify Class Reference</h1>
+					<h1 class="title">RakamIdentify Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -102,7 +102,7 @@
 	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>AMPIdentify.h<br />AMPIdentify.m</td>
+	<td>RakamIdentify.h<br />RakamIdentify.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -112,17 +112,17 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p><code>AMPIdentify</code> objects are a wrapper for user property operations, which get passed to the <a href="#//api/name/identify"><code>identify</code></a> method to send to <a href="../Classes/Amplitude.html">Amplitude</a> servers.</p>
+						<p><code>RakamIdentify</code> objects are a wrapper for user property operations, which get passed to the <a href="#//api/name/identify"><code>identify</code></a> method to send to <a href="../Classes/Rakam.html">Rakam</a> servers.</p>
 
 <p><strong>Note:</strong> if a user property is used in multiple operations on the same Identify object, only the first operation will be saved, and the rest will be ignored.</p>
 
 <p>Each method adds a user property operation to the Identify object, and returns the same Identify object, allowing you to chain multiple method calls together.</p>
 
-<p>Here is an example of how to use <code>AMPIdentify</code> to send user property operations:</p>
+<p>Here is an example of how to use <code>RakamIdentify</code> to send user property operations:</p>
 
-<pre><code>AMPIdentify *identify = [[AMPIdentify identify] add:@"karma" value:[NSNumber numberWithInt:1]];
+<pre><code>RakamIdentify *identify = [[RakamIdentify identify] add:@"karma" value:[NSNumber numberWithInt:1]];
 [[identify set:@"colors" value:@[@"rose", @"gold"]] append:@"ab-tests" value:@"campaign_a"];
-[[Amplitude instance] identify:identify];
+[[Rakam instance] identify:identify];
 </code></pre>
 
 <p>See <a href="https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations">User Properties and User Property Operations</a></p>
@@ -136,8 +136,8 @@
 						<a title="Tasks" name="tasks"></a>
 						
 
-						<a title="Creating an AMPIdentify Object" name="task_Creating an AMPIdentify Object"></a>
-						<h2 class="task-title">Creating an AMPIdentify Object</h2>
+						<a title="Creating an RakamIdentify Object" name="task_Creating an RakamIdentify Object"></a>
+						<h2 class="task-title">Creating an RakamIdentify Object</h2>
 
 						<div class="task-list">
 							<div class="section-method">
@@ -152,7 +152,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Creates a nwe <a href="#">AMPIdentify</a> object.</p>
+				<p>Creates a nwe <a href="#">RakamIdentify</a> object.</p>
 			</div>
 			
 		    
@@ -165,7 +165,7 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>a new <a href="#">AMPIdentify</a> object.</p>
+				<p>a new <a href="#">RakamIdentify</a> object.</p>
 			</div>
 			
 
@@ -174,7 +174,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Creates a nwe <a href="#">AMPIdentify</a> object.</p>
+				<p>Creates a nwe <a href="#">RakamIdentify</a> object.</p>
 			</div>
 			
 
@@ -185,7 +185,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">AMPIdentify.h</code></p>
+				<p><code class="declared-in-ref">RakamIdentify.h</code></p>
 			</div>
 			
 			
@@ -216,7 +216,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (AMPIdentify *)add:(NSString *)<em>property</em> value:(NSObject *)<em>value</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (RakamIdentify *)add:(NSString *)<em>property</em> value:(NSObject *)<em>value</em></code></div>
 
 		    
 			
@@ -241,7 +241,7 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>the same <a href="#">AMPIdentify</a> object, allowing you to chain multiple method calls together.</p>
+				<p>the same <a href="#">RakamIdentify</a> object, allowing you to chain multiple method calls together.</p>
 			</div>
 			
 
@@ -272,7 +272,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">AMPIdentify.h</code></p>
+				<p><code class="declared-in-ref">RakamIdentify.h</code></p>
 			</div>
 			
 			
@@ -295,7 +295,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (AMPIdentify *)append:(NSString *)<em>property</em> value:(NSObject *)<em>value</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (RakamIdentify *)append:(NSString *)<em>property</em> value:(NSObject *)<em>value</em></code></div>
 
 		    
 			
@@ -320,7 +320,7 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>the same <a href="#">AMPIdentify</a> object, allowing you to chain multiple method calls together.</p>
+				<p>the same <a href="#">RakamIdentify</a> object, allowing you to chain multiple method calls together.</p>
 			</div>
 			
 
@@ -351,7 +351,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">AMPIdentify.h</code></p>
+				<p><code class="declared-in-ref">RakamIdentify.h</code></p>
 			</div>
 			
 			
@@ -374,7 +374,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (AMPIdentify *)prepend:(NSString *)<em>property</em> value:(NSObject *)<em>value</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (RakamIdentify *)prepend:(NSString *)<em>property</em> value:(NSObject *)<em>value</em></code></div>
 
 		    
 			
@@ -399,7 +399,7 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>the same <a href="#">AMPIdentify</a> object, allowing you to chain multiple method calls together.</p>
+				<p>the same <a href="#">RakamIdentify</a> object, allowing you to chain multiple method calls together.</p>
 			</div>
 			
 
@@ -430,7 +430,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">AMPIdentify.h</code></p>
+				<p><code class="declared-in-ref">RakamIdentify.h</code></p>
 			</div>
 			
 			
@@ -453,7 +453,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (AMPIdentify *)set:(NSString *)<em>property</em> value:(NSObject *)<em>value</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (RakamIdentify *)set:(NSString *)<em>property</em> value:(NSObject *)<em>value</em></code></div>
 
 		    
 			
@@ -478,7 +478,7 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>the same <a href="#">AMPIdentify</a> object, allowing you to chain multiple method calls together.</p>
+				<p>the same <a href="#">RakamIdentify</a> object, allowing you to chain multiple method calls together.</p>
 			</div>
 			
 
@@ -507,7 +507,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">AMPIdentify.h</code></p>
+				<p><code class="declared-in-ref">RakamIdentify.h</code></p>
 			</div>
 			
 			
@@ -530,7 +530,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (AMPIdentify *)setOnce:(NSString *)<em>property</em> value:(NSObject *)<em>value</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (RakamIdentify *)setOnce:(NSString *)<em>property</em> value:(NSObject *)<em>value</em></code></div>
 
 		    
 			
@@ -555,7 +555,7 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>the same <a href="#">AMPIdentify</a> object, allowing you to chain multiple method calls together.</p>
+				<p>the same <a href="#">RakamIdentify</a> object, allowing you to chain multiple method calls together.</p>
 			</div>
 			
 
@@ -586,7 +586,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">AMPIdentify.h</code></p>
+				<p><code class="declared-in-ref">RakamIdentify.h</code></p>
 			</div>
 			
 			
@@ -609,7 +609,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (AMPIdentify *)unset:(NSString *)<em>property</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (RakamIdentify *)unset:(NSString *)<em>property</em></code></div>
 
 		    
 			
@@ -629,7 +629,7 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>the same <a href="#">AMPIdentify</a> object, allowing you to chain multiple method calls together.</p>
+				<p>the same <a href="#">RakamIdentify</a> object, allowing you to chain multiple method calls together.</p>
 			</div>
 			
 
@@ -658,7 +658,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">AMPIdentify.h</code></p>
+				<p><code class="declared-in-ref">RakamIdentify.h</code></p>
 			</div>
 			
 			
@@ -679,7 +679,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Amplitude. All rights reserved. Updated: 2016-12-05</p>
+						<p class="copyright">Copyright &copy; 2016 Rakam. All rights reserved. Updated: 2016-12-05</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>

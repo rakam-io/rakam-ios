@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>AMPRevenue Class Reference</title>
+	<title>RakamRevenue Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -14,11 +14,11 @@
 		<div class="container" class="hide-in-xcode">
 			
 			<h1 id="library-title">
-				<a href="../index.html">Amplitude-iOS </a>
+				<a href="../index.html">Rakam-iOS </a>
 			</h1>
 
 			<p id="developer-home">
-				<a href="../index.html">Amplitude</a>
+				<a href="../index.html">Rakam</a>
 			</p>
 			
 		</div>
@@ -109,7 +109,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">AMPRevenue Class Reference</h1>
+					<h1 class="title">RakamRevenue Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -118,7 +118,7 @@
 	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>AMPRevenue.h<br />AMPRevenue.m</td>
+	<td>RakamRevenue.h<br />RakamRevenue.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -128,7 +128,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p><code>AMPRevenue</code> objects are a wrapper for <a href="#//api/name/revenue">revenue</a> data, which get passed to the <code>logRevenueV2</code> method to send to <a href="../Classes/Amplitude.html">Amplitude</a> servers.</p>
+						<p><code>RakamRevenue</code> objects are a wrapper for <a href="#//api/name/revenue">revenue</a> data, which get passed to the <code>logRevenueV2</code> method to send to <a href="../Classes/Rakam.html">Rakam</a> servers.</p>
 
 <p><strong>Note:</strong> <a href="#//api/name/price">price</a> is a required field. If <a href="#//api/name/quantity">quantity</a> is not specified, then defaults to 1.</p>
 
@@ -136,14 +136,14 @@
 
 <p>Each method updates a <a href="#//api/name/revenue">revenue</a> property in the Revenue object, and returns the same Revenue object, allowing you to chain multiple method calls together.</p>
 
-<p>Here is an example of how to use <code>AMPRevenue</code> to send <a href="#//api/name/revenue">revenue</a> data:</p>
+<p>Here is an example of how to use <code>RakamRevenue</code> to send <a href="#//api/name/revenue">revenue</a> data:</p>
 
-<pre><code>AMPRevenue *revenue = [[[AMPRevenue revenue] setProductIdentifier:@"productIdentifier"] setQuantity:3];
+<pre><code>RakamRevenue *revenue = [[[RakamRevenue revenue] setProductIdentifier:@"productIdentifier"] setQuantity:3];
 [revenue setPrice:[NSNumber numberWithDouble:3.99]];
-[[Amplitude instance] logRevenueV2:revenue];
+[[Rakam instance] logRevenueV2:revenue];
 </code></pre>
 
-<p>See <a href="https://github.com/amplitude/Amplitude-iOS#tracking-revenue">Tracking Revenue</a> for more information about logging Revenue.</p>
+<p>See <a href="https://github.com/amplitude/Rakam-iOS#tracking-revenue">Tracking Revenue</a> for more information about logging Revenue.</p>
 					</div>
 					
 					
@@ -198,7 +198,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">AMPRevenue.h</code></p>
+				<p><code class="declared-in-ref">RakamRevenue.h</code></p>
 			</div>
 			
 			
@@ -246,7 +246,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">AMPRevenue.h</code></p>
+				<p><code class="declared-in-ref">RakamRevenue.h</code></p>
 			</div>
 			
 			
@@ -302,7 +302,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">AMPRevenue.h</code></p>
+				<p><code class="declared-in-ref">RakamRevenue.h</code></p>
 			</div>
 			
 			
@@ -348,7 +348,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">AMPRevenue.h</code></p>
+				<p><code class="declared-in-ref">RakamRevenue.h</code></p>
 			</div>
 			
 			
@@ -403,7 +403,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">AMPRevenue.h</code></p>
+				<p><code class="declared-in-ref">RakamRevenue.h</code></p>
 			</div>
 			
 			
@@ -458,7 +458,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">AMPRevenue.h</code></p>
+				<p><code class="declared-in-ref">RakamRevenue.h</code></p>
 			</div>
 			
 			
@@ -468,8 +468,8 @@
 						</div>
 						
 
-						<a title="Creating an AMPRevenue Object" name="task_Creating an AMPRevenue Object"></a>
-						<h2 class="task-title">Creating an AMPRevenue Object</h2>
+						<a title="Creating an RakamRevenue Object" name="task_Creating an RakamRevenue Object"></a>
+						<h2 class="task-title">Creating an RakamRevenue Object</h2>
 
 						<div class="task-list">
 							<div class="section-method">
@@ -484,7 +484,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Creates a new <a href="#">AMPRevenue</a> object.</p>
+				<p>Creates a new <a href="#">RakamRevenue</a> object.</p>
 			</div>
 			
 		    
@@ -497,7 +497,7 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>a new <a href="#">AMPRevenue</a> object.</p>
+				<p>a new <a href="#">RakamRevenue</a> object.</p>
 			</div>
 			
 
@@ -506,7 +506,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Creates a new <a href="#">AMPRevenue</a> object.</p>
+				<p>Creates a new <a href="#">RakamRevenue</a> object.</p>
 			</div>
 			
 
@@ -517,7 +517,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">AMPRevenue.h</code></p>
+				<p><code class="declared-in-ref">RakamRevenue.h</code></p>
 			</div>
 			
 			
@@ -548,7 +548,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (AMPRevenue *)setProductIdentifier:(NSString *)<em>productIdentifier</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (RakamRevenue *)setProductIdentifier:(NSString *)<em>productIdentifier</em></code></div>
 
 		    
 			
@@ -568,7 +568,7 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>the same <a href="#">AMPRevenue</a> object, allowing you to chain multiple method calls together.</p>
+				<p>the same <a href="#">RakamRevenue</a> object, allowing you to chain multiple method calls together.</p>
 			</div>
 			
 
@@ -588,7 +588,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">AMPRevenue.h</code></p>
+				<p><code class="declared-in-ref">RakamRevenue.h</code></p>
 			</div>
 			
 			
@@ -611,7 +611,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (AMPRevenue *)setQuantity:(NSInteger)<em>quantity</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (RakamRevenue *)setQuantity:(NSInteger)<em>quantity</em></code></div>
 
 		    
 			
@@ -631,7 +631,7 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>the same <a href="#">AMPRevenue</a> object, allowing you to chain multiple method calls together.</p>
+				<p>the same <a href="#">RakamRevenue</a> object, allowing you to chain multiple method calls together.</p>
 			</div>
 			
 
@@ -653,7 +653,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">AMPRevenue.h</code></p>
+				<p><code class="declared-in-ref">RakamRevenue.h</code></p>
 			</div>
 			
 			
@@ -676,7 +676,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (AMPRevenue *)setPrice:(NSNumber *)<em>price</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (RakamRevenue *)setPrice:(NSNumber *)<em>price</em></code></div>
 
 		    
 			
@@ -696,7 +696,7 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>the same <a href="#">AMPRevenue</a> object, allowing you to chain multiple method calls together.</p>
+				<p>the same <a href="#">RakamRevenue</a> object, allowing you to chain multiple method calls together.</p>
 			</div>
 			
 
@@ -718,7 +718,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">AMPRevenue.h</code></p>
+				<p><code class="declared-in-ref">RakamRevenue.h</code></p>
 			</div>
 			
 			
@@ -741,7 +741,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (AMPRevenue *)setRevenueType:(NSString *)<em>revenueType</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (RakamRevenue *)setRevenueType:(NSString *)<em>revenueType</em></code></div>
 
 		    
 			
@@ -761,7 +761,7 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>the same <a href="#">AMPRevenue</a> object, allowing you to chain multiple method calls together.</p>
+				<p>the same <a href="#">RakamRevenue</a> object, allowing you to chain multiple method calls together.</p>
 			</div>
 			
 
@@ -781,7 +781,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">AMPRevenue.h</code></p>
+				<p><code class="declared-in-ref">RakamRevenue.h</code></p>
 			</div>
 			
 			
@@ -804,7 +804,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (AMPRevenue *)setReceipt:(NSData *)<em>receipt</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (RakamRevenue *)setReceipt:(NSData *)<em>receipt</em></code></div>
 
 		    
 			
@@ -824,7 +824,7 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>the same <a href="#">AMPRevenue</a> object, allowing you to chain multiple method calls together.</p>
+				<p>the same <a href="#">RakamRevenue</a> object, allowing you to chain multiple method calls together.</p>
 			</div>
 			
 
@@ -855,7 +855,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">AMPRevenue.h</code></p>
+				<p><code class="declared-in-ref">RakamRevenue.h</code></p>
 			</div>
 			
 			
@@ -878,7 +878,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (AMPRevenue *)setEventProperties:(NSDictionary *)<em>eventProperties</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (RakamRevenue *)setEventProperties:(NSDictionary *)<em>eventProperties</em></code></div>
 
 		    
 			
@@ -898,7 +898,7 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>the same <a href="#">AMPRevenue</a> object, allowing you to chain multiple method calls together.</p>
+				<p>the same <a href="#">RakamRevenue</a> object, allowing you to chain multiple method calls together.</p>
 			</div>
 			
 
@@ -927,7 +927,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">AMPRevenue.h</code></p>
+				<p><code class="declared-in-ref">RakamRevenue.h</code></p>
 			</div>
 			
 			
@@ -948,7 +948,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Amplitude. All rights reserved. Updated: 2016-12-05</p>
+						<p class="copyright">Copyright &copy; 2016 Rakam. All rights reserved. Updated: 2016-12-05</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>

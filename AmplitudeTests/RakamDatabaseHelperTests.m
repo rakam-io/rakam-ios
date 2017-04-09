@@ -1,25 +1,25 @@
 //
-//  AMPDatabaseHelperTests.m
-//  Amplitude
+//  RakamDatabaseHelperTests.m
+//  Rakam
 //
 //  Created by Daniel Jih on 9/9/15.
-//  Copyright (c) 2015 Amplitude. All rights reserved.
+//  Copyright (c) 2015 Rakam. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
-#import "AMPDatabaseHelper.h"
-#import "AMPARCMacros.h"
-#import "AMPConstants.h"
+#import "RakamDatabaseHelper.h"
+#import "RakamARCMacros.h"
+#import "RakamConstants.h"
 
-@interface AMPDatabaseHelperTests : XCTestCase
-@property (nonatomic, strong)  AMPDatabaseHelper *databaseHelper;
+@interface RakamDatabaseHelperTests : XCTestCase
+@property (nonatomic, strong)  RakamDatabaseHelper *databaseHelper;
 @end
 
-@implementation AMPDatabaseHelperTests {}
+@implementation RakamDatabaseHelperTests {}
 
 - (void)setUp {
     [super setUp];
-    self.databaseHelper = [AMPDatabaseHelper getDatabaseHelper];
+    self.databaseHelper = [RakamDatabaseHelper getDatabaseHelper];
     [self.databaseHelper resetDB:NO];
 }
 
@@ -31,23 +31,23 @@
 
 - (void)testGetDatabaseHelper {
     // test backwards compatibility on default instance
-    AMPDatabaseHelper *dbHelper = [AMPDatabaseHelper getDatabaseHelper];
-    XCTAssertEqual(dbHelper, [AMPDatabaseHelper getDatabaseHelper:nil]);
-    XCTAssertEqual(dbHelper, [AMPDatabaseHelper getDatabaseHelper:@""]);
-    XCTAssertEqual(dbHelper, [AMPDatabaseHelper getDatabaseHelper:kAMPDefaultInstance]);
+    RakamDatabaseHelper *dbHelper = [RakamDatabaseHelper getDatabaseHelper];
+    XCTAssertEqual(dbHelper, [RakamDatabaseHelper getDatabaseHelper:nil]);
+    XCTAssertEqual(dbHelper, [RakamDatabaseHelper getDatabaseHelper:@""]);
+    XCTAssertEqual(dbHelper, [RakamDatabaseHelper getDatabaseHelper:kRKMDefaultInstance]);
 
-    AMPDatabaseHelper *a = [AMPDatabaseHelper getDatabaseHelper:@"a"];
-    AMPDatabaseHelper *b = [AMPDatabaseHelper getDatabaseHelper:@"b"];
+    RakamDatabaseHelper *a = [RakamDatabaseHelper getDatabaseHelper:@"a"];
+    RakamDatabaseHelper *b = [RakamDatabaseHelper getDatabaseHelper:@"b"];
     XCTAssertNotEqual(dbHelper, a);
     XCTAssertNotEqual(dbHelper, b);
     XCTAssertNotEqual(a, b);
-    XCTAssertEqual(a, [AMPDatabaseHelper getDatabaseHelper:@"a"]);
-    XCTAssertEqual(b, [AMPDatabaseHelper getDatabaseHelper:@"b"]);
+    XCTAssertEqual(a, [RakamDatabaseHelper getDatabaseHelper:@"a"]);
+    XCTAssertEqual(b, [RakamDatabaseHelper getDatabaseHelper:@"b"]);
 
     // test case insensitive instance name
-    XCTAssertEqual(a, [AMPDatabaseHelper getDatabaseHelper:@"A"]);
-    XCTAssertEqual(b, [AMPDatabaseHelper getDatabaseHelper:@"B"]);
-    XCTAssertEqual(dbHelper, [AMPDatabaseHelper getDatabaseHelper:[kAMPDefaultInstance uppercaseString]]);
+    XCTAssertEqual(a, [RakamDatabaseHelper getDatabaseHelper:@"A"]);
+    XCTAssertEqual(b, [RakamDatabaseHelper getDatabaseHelper:@"B"]);
+    XCTAssertEqual(dbHelper, [RakamDatabaseHelper getDatabaseHelper:[kRKMDefaultInstance uppercaseString]]);
 
     // test each instance maintains separate database files
     XCTAssertTrue([a.databasePath rangeOfString:@"com.amplitude.database_a"].location != NSNotFound);
@@ -60,9 +60,9 @@
 }
 
 - (void)testSeparateInstances {
-    AMPDatabaseHelper *dbHelper = [AMPDatabaseHelper getDatabaseHelper];
-    AMPDatabaseHelper *a = [AMPDatabaseHelper getDatabaseHelper:@"a"];
-    AMPDatabaseHelper *b = [AMPDatabaseHelper getDatabaseHelper:@"b"];
+    RakamDatabaseHelper *dbHelper = [RakamDatabaseHelper getDatabaseHelper];
+    RakamDatabaseHelper *a = [RakamDatabaseHelper getDatabaseHelper:@"a"];
+    RakamDatabaseHelper *b = [RakamDatabaseHelper getDatabaseHelper:@"b"];
 
     [a resetDB:NO];
     [b resetDB:NO];

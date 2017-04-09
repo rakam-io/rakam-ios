@@ -1,33 +1,33 @@
 //
-//  AMPRevenue.m
-//  Amplitude
+//  RakamRevenue.m
+//  Rakam
 //
 //  Created by Daniel Jih on 04/18/16.
-//  Copyright © 2016 Amplitude. All rights reserved.
+//  Copyright © 2016 Rakam. All rights reserved.
 //
 
-#ifndef AMPLITUDE_DEBUG
-#define AMPLITUDE_DEBUG 0
+#ifndef RAKAM_DEBUG
+#define RAKAM_DEBUG 0
 #endif
 
-#ifndef AMPLITUDE_LOG
-#if AMPLITUDE_DEBUG
-#   define AMPLITUDE_LOG(fmt, ...) NSLog(fmt, ##__VA_ARGS__)
+#ifndef RAKAM_LOG
+#if RAKAM_DEBUG
+#   define RAKAM_LOG(fmt, ...) NSLog(fmt, ##__VA_ARGS__)
 #else
-#   define AMPLITUDE_LOG(...)
+#   define RAKAM_LOG(...)
 #endif
 #endif
 
 #import <Foundation/Foundation.h>
-#import "AMPRevenue.h"
-#import "AMPARCMacros.h"
-#import "AMPConstants.h"
-#import "AMPUtils.h"
+#import "RakamRevenue.h"
+#import "RakamARCMacros.h"
+#import "RakamConstants.h"
+#import "RakamUtils.h"
 
-@interface AMPRevenue()
+@interface RakamRevenue()
 @end
 
-@implementation AMPRevenue{}
+@implementation RakamRevenue{}
 
 - (void)dealloc
 {
@@ -48,7 +48,7 @@
 }
 
 /*
- * Create an AMPRevenue object
+ * Create an RakamRevenue object
  */
 + (instancetype)revenue
 {
@@ -64,10 +64,10 @@
     return YES;
 }
 
-- (AMPRevenue*)setProductIdentifier:(NSString *) productIdentifier
+- (RakamRevenue*)setProductIdentifier:(NSString *) productIdentifier
 {
-    if ([AMPUtils isEmptyString:productIdentifier]) {
-        AMPLITUDE_LOG(@"Invalid empty productIdentifier");
+    if ([RakamUtils isEmptyString:productIdentifier]) {
+        RAKAM_LOG(@"Invalid empty productIdentifier");
         return self;
     }
 
@@ -77,13 +77,13 @@
     return self;
 }
 
-- (AMPRevenue*)setQuantity:(NSInteger) quantity
+- (RakamRevenue*)setQuantity:(NSInteger) quantity
 {
     _quantity = quantity;
     return self;
 }
 
-- (AMPRevenue*)setPrice:(NSNumber *) price
+- (RakamRevenue*)setPrice:(NSNumber *) price
 {
     (void) SAFE_ARC_RETAIN(price);
     SAFE_ARC_RELEASE(_price);
@@ -91,7 +91,7 @@
     return self;
 }
 
-- (AMPRevenue*)setRevenueType:(NSString*) revenueType
+- (RakamRevenue*)setRevenueType:(NSString*) revenueType
 {
     (void) SAFE_ARC_RETAIN(revenueType);
     SAFE_ARC_RELEASE(_revenueType);
@@ -99,7 +99,7 @@
     return self;
 }
 
-- (AMPRevenue*)setReceipt:(NSData*) receipt
+- (RakamRevenue*)setReceipt:(NSData*) receipt
 {
     (void) SAFE_ARC_RETAIN(receipt);
     SAFE_ARC_RELEASE(_receipt);
@@ -107,7 +107,7 @@
     return self;
 }
 
-- (AMPRevenue*)setEventProperties:(NSDictionary*) eventProperties
+- (RakamRevenue*)setEventProperties:(NSDictionary*) eventProperties
 {
     eventProperties = [eventProperties copy];
     SAFE_ARC_RELEASE(_properties);
@@ -124,17 +124,17 @@
         dict = [_properties mutableCopy];
     }
 
-    [dict setValue:_productId forKey:AMP_REVENUE_PRODUCT_ID];
-    [dict setValue:[NSNumber numberWithInteger:_quantity] forKey:AMP_REVENUE_QUANTITY];
-    [dict setValue:_price forKey:AMP_REVENUE_PRICE];
-    [dict setValue:_revenueType forKey:AMP_REVENUE_REVENUE_TYPE];
+    [dict setValue:_productId forKey:RKM_REVENUE_PRODUCT_ID];
+    [dict setValue:[NSNumber numberWithInteger:_quantity] forKey:RKM_REVENUE_QUANTITY];
+    [dict setValue:_price forKey:RKM_REVENUE_PRICE];
+    [dict setValue:_revenueType forKey:RKM_REVENUE_REVENUE_TYPE];
 
     if ([_receipt respondsToSelector:@selector(base64EncodedStringWithOptions:)]) {
-        [dict setValue:[_receipt base64EncodedStringWithOptions:0] forKey:AMP_REVENUE_RECEIPT];
+        [dict setValue:[_receipt base64EncodedStringWithOptions:0] forKey:RKM_REVENUE_RECEIPT];
     } else {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated"
-        [dict setValue:[_receipt base64Encoding] forKey:AMP_REVENUE_RECEIPT];
+        [dict setValue:[_receipt base64Encoding] forKey:RKM_REVENUE_RECEIPT];
 #pragma clang diagnostic pop
     }
 

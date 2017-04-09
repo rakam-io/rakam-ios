@@ -1,66 +1,27 @@
-#if AMPLITUDE_SSL_PINNING
 //
-//  AMPURLConnection.m
-//  Amplitude
+//  RakamURLConnection.m
+//  Rakam
 //
-//  Created by Allan on 3/13/15.
-//  Copyright (c) 2015 Amplitude. All rights reserved.
+//  Copyright (c) 2015 Rakam. All rights reserved.
 //
 
-#import "AMPURLConnection.h"
-#import "AMPARCMacros.h"
-#import "AMPConstants.h"
-#import "ISPCertificatePinning.h"
-#import "ISPPinnedNSURLConnectionDelegate.h"
+#import "RakamURLConnection.h"
+#import "RakamARCMacros.h"
 
-@interface AMPURLConnection ()
+@interface RakamURLConnection ()
 
 @property (nonatomic, copy) void (^completionHandler)(NSURLResponse *, NSData *, NSError *);
 @property (nonatomic, retain) NSURLConnection *connection;
 @property (nonatomic, retain) NSMutableData *data;
 @property (nonatomic, retain) NSURLResponse *response;
-@property (nonatomic, retain) AMPURLConnection *delegate;
+@property (nonatomic, retain) RakamURLConnection *delegate;
 
 @end
 
-@implementation AMPURLConnection
+@implementation RakamURLConnection
 
 + (void)initialize
 {
-    if (self == [AMPURLConnection class]) {
-        [AMPURLConnection pinSSLCertificate:@[@"ComodoRsaCA", @"ComodoRsaDomainValidationCA"]];
-    }
-}
-
-+ (void)pinSSLCertificate:(NSArray *)certFilenames
-{
-    // We pin the anchor/CA certificates
-    NSMutableArray *certs = [NSMutableArray array];
-    for (NSString *certFilename in certFilenames) {
-        NSString *certPath =  [[NSBundle bundleForClass:[self class]] pathForResource:certFilename ofType:@"der"];
-        NSData *certData = SAFE_ARC_AUTORELEASE([[NSData alloc] initWithContentsOfFile:certPath]);
-        if (certData == nil) {
-            NSLog(@"Failed to load a certificate");
-            return;
-        }
-        [certs addObject:certData];
-    }
-
-    NSMutableDictionary *pins = [[NSMutableDictionary alloc] init];
-    [pins setObject:certs forKey:kAMPEventLogDomain];
-
-    if (pins == nil) {
-        NSLog(@"Failed to pin a certificate");
-        return;
-    }
-
-    // Save the SSL pins so that our connection delegates automatically use them
-    if ([ISPCertificatePinning setupSSLPinsUsingDictionnary:pins] != YES) {
-        NSLog(@"Failed to pin the certificates");
-        SAFE_ARC_RELEASE(pins);
-        return;
-    }
-    SAFE_ARC_RELEASE(pins);
 }
 
 /**
@@ -75,12 +36,12 @@
               completionHandler:(void (^)(NSURLResponse *response, NSData *data, NSError *connectionError))handler
 {
     // Ignore the return value. See note below about self retaining.
-    (void)[[AMPURLConnection alloc] initWithRequest:request
+    (void)[[RakamURLConnection alloc] initWithRequest:request
                                               queue:queue
                                   completionHandler:handler];
 }
 
-- (AMPURLConnection *)initWithRequest:(NSURLRequest *)request
+- (RakamURLConnection *)initWithRequest:(NSURLRequest *)request
                                 queue:(NSOperationQueue *)queue
                     completionHandler:(void (^)(NSURLResponse *response, NSData *data, NSError *connectionError))handler
 {
@@ -144,4 +105,3 @@
 }
 
 @end
-#endif

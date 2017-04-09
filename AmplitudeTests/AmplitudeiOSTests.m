@@ -1,24 +1,24 @@
 //
 //  AmplitudeTests.m
-//  Amplitude
+//  Rakam
 //
 //  Created by Daniel Jih on 8/7/15.
-//  Copyright (c) 2015 Amplitude. All rights reserved.
+//  Copyright (c) 2015 Rakam. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 #import <UIKit/UIKit.h>
 #import <OCMock/OCMock.h>
-#import "Amplitude.h"
-#import "AMPConstants.h"
-#import "Amplitude+Test.h"
+#import "Rakam.h"
+#import "RakamConstants.h"
+#import "Rakam+Test.h"
 #import "BaseTestCase.h"
-#import "AMPDeviceInfo.h"
-#import "AMPARCMacros.h"
-#import "AMPUtils.h"
+#import "RakamDeviceInfo.h"
+#import "RakamARCMacros.h"
+#import "RakamUtils.h"
 
 // expose private methods for unit testing
-@interface Amplitude (Tests)
+@interface Rakam (Tests)
 - (NSDictionary*)mergeEventsAndIdentifys:(NSMutableArray*)events identifys:(NSMutableArray*)identifys numEvents:(long) numEvents;
 - (id) truncate:(id) obj;
 - (long long)getNextSequenceNumber;
@@ -37,7 +37,7 @@
     [super setUp];
     _connectionMock = [OCMockObject mockForClass:NSURLConnection.class];
     _connectionCallCount = 0;
-    [self.amplitude initializeApiKey:apiKey];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] : apiKey];
 }
 
 - (void)tearDown {
@@ -60,22 +60,22 @@
                                             }];
 
     [self setupAsyncResponse:_connectionMock response:serverResponse];
-    for (int i = 0; i < kAMPEventUploadThreshold; i++) {
+    for (int i = 0; i < kRKMEventUploadThreshold; i++) {
         [self.amplitude logEvent:@"test"];
     }
     [self.amplitude logEvent:@"test"];
     [self.amplitude flushQueue];
 
     // no sent events, event count will be threshold + 1
-    XCTAssertEqual([self.amplitude queuedEventCount], kAMPEventUploadThreshold + 1);
+    XCTAssertEqual([self.amplitude queuedEventCount], kRKMEventUploadThreshold + 1);
 
     [serverResponse setValue:[@"request_db_write_failed" dataUsingEncoding:NSUTF8StringEncoding] forKey:@"data"];
     [self setupAsyncResponse:_connectionMock response:serverResponse];
-    for (int i = 0; i < kAMPEventUploadThreshold; i++) {
+    for (int i = 0; i < kRKMEventUploadThreshold; i++) {
         [self.amplitude logEvent:@"test"];
     }
     [self.amplitude flushQueue];
-    XCTAssertEqual([self.amplitude queuedEventCount], 2 * kAMPEventUploadThreshold + 1);
+    XCTAssertEqual([self.amplitude queuedEventCount], 2 * kRKMEventUploadThreshold + 1);
 
     // make post request should only be called 3 times
     XCTAssertEqual(_connectionCallCount, 2);
@@ -86,7 +86,7 @@
     [self.amplitude flushQueue];
     NSDictionary *event = [self.amplitude getLastEvent];
 
-    XCTAssertEqualObjects([event objectForKey:@"event_type"], @"test");
+    XCTAssertEqualObjects([event objectForKey:@"collection"], @"test");
     XCTAssertEqualObjects([event objectForKey:@"os_name"], @"ios");
     XCTAssertEqualObjects([event objectForKey:@"platform"], @"iOS");
 }

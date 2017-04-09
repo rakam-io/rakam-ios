@@ -3,17 +3,17 @@
 //  SessionTests
 //
 //  Created by Curtis on 9/24/14.
-//  Copyright (c) 2014 Amplitude. All rights reserved.
+//  Copyright (c) 2014 Rakam. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 #import <UIKit/UIKit.h>
 #import <OCMock/OCMock.h>
-#import "Amplitude.h"
-#import "Amplitude+Test.h"
+#import "Rakam.h"
+#import "Rakam+Test.h"
 #import "BaseTestCase.h"
-#import "AMPConstants.h"
-#import "AMPUtils.h"
+#import "RakamConstants.h"
+#import "RakamUtils.h"
 
 @interface SetupTests : BaseTestCase
 
@@ -30,12 +30,12 @@
 }
 
 - (void)testApiKeySet {
-    [self.amplitude initializeApiKey:apiKey];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey];
     XCTAssertEqual(self.amplitude.apiKey, apiKey);
 }
 
 - (void)testDeviceIdSet {
-    [self.amplitude initializeApiKey:apiKey];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey];
     [self.amplitude flushQueue];
     XCTAssertNotNil([self.amplitude deviceId]);
     XCTAssertEqual([self.amplitude deviceId].length, 36);
@@ -43,43 +43,43 @@
 }
 
 - (void)testUserIdNotSet {
-    [self.amplitude initializeApiKey:apiKey];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey];
     [self.amplitude flushQueue];
     XCTAssertNil([self.amplitude userId]);
 }
 
 - (void)testUserIdSet {
-    [self.amplitude initializeApiKey:apiKey userId:userId];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey userId:userId];
     [self.amplitude flushQueue];
     XCTAssertEqualObjects([self.amplitude userId], userId);
 }
 
 - (void)testInitializedSet {
-    [self.amplitude initializeApiKey:apiKey];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey];
     XCTAssert([self.amplitude initialized]);
 }
 
 - (void)testOptOut {
-    [self.amplitude initializeApiKey:apiKey];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey];
 
     [self.amplitude setOptOut:YES];
     [self.amplitude logEvent:@"Opted Out"];
     [self.amplitude flushQueue];
 
     XCTAssert(self.amplitude.optOut == YES);
-    XCTAssert(![[self.amplitude getLastEvent][@"event_type"] isEqualToString:@"Opted Out"]);
+    XCTAssert(![[self.amplitude getLastEvent][@"collection"] isEqualToString:@"Opted Out"]);
 
     [self.amplitude setOptOut:NO];
     [self.amplitude logEvent:@"Opted In"];
     [self.amplitude flushQueue];
 
     XCTAssert(self.amplitude.optOut == NO);
-    XCTAssert([[self.amplitude getLastEvent][@"event_type"] isEqualToString:@"Opted In"]);
+    XCTAssert([[self.amplitude getLastEvent][@"collection"] isEqualToString:@"Opted In"]);
 }
 
 - (void)testUserPropertiesSet {
-    [self.amplitude initializeApiKey:apiKey];
-    AMPDatabaseHelper *dbHelper = [AMPDatabaseHelper getDatabaseHelper];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey];
+    RakamDatabaseHelper *dbHelper = [RakamDatabaseHelper getDatabaseHelper];
     XCTAssertEqual([dbHelper getEventCount], 0);
 
     NSDictionary *properties = @{
@@ -94,19 +94,27 @@
     XCTAssertEqual([dbHelper getIdentifyCount], 1);
     XCTAssertEqual([dbHelper getTotalEventCount], 1);
 
-    NSDictionary *expected = [NSDictionary dictionaryWithObject:properties forKey:AMP_OP_SET];
+    NSDictionary *expected = [NSDictionary dictionaryWithObject:properties forKey:RKM_OP_SET];
 
     NSDictionary *event = [self.amplitude getLastIdentify];
-    XCTAssertEqualObjects([event objectForKey:@"event_type"], IDENTIFY_EVENT);
-    XCTAssertEqualObjects([event objectForKey:@"user_properties"], expected);
-    XCTAssertEqualObjects([event objectForKey:@"event_properties"], [NSDictionary dictionary]); // event properties should be empty
-    XCTAssertEqual(1, [[event objectForKey:@"sequence_number"] intValue]);
+    XCTAssertEqualObjects([event objectForKey:@"collection"], IDENTIFY_EVENT);
+    XCTAssertTrue([self key:[event objectForKey:@"properties"] containsInDictionary:expected]);
+}
+
+-(BOOL)key:(NSDictionary *)main containsInDictionary:(NSDictionary *)Dictionary
+{
+    for (NSString *keyStr in Dictionary) {
+        if(![[Dictionary objectForKey:keyStr] isEqual:[main objectForKey:keyStr]]) {
+            return false;
+        }
+    }
+    return true;
 }
 
 - (void)testSetDeviceId {
-    AMPDatabaseHelper *dbHelper = [AMPDatabaseHelper getDatabaseHelper];
+    RakamDatabaseHelper *dbHelper = [RakamDatabaseHelper getDatabaseHelper];
 
-    [self.amplitude initializeApiKey:apiKey];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey];
     [self.amplitude flushQueue];
     NSString *generatedDeviceId = [self.amplitude getDeviceId];
     XCTAssertNotNil(generatedDeviceId);
@@ -135,7 +143,7 @@
     XCTAssertEqualObjects([self.amplitude getDeviceId], generatedDeviceId);
     XCTAssertEqualObjects([dbHelper getValue:@"device_id"], generatedDeviceId);
 
-    NSString *validDeviceId = [AMPUtils generateUUID];
+    NSString *validDeviceId = [RakamUtils generateUUID];
     [self.amplitude setDeviceId:validDeviceId];
     [self.amplitude flushQueue];
     XCTAssertEqualObjects([self.amplitude getDeviceId], validDeviceId);

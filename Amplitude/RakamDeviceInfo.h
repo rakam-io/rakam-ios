@@ -1,7 +1,7 @@
 //
-//  AMPDeviceInfo.h
+//  RakamDeviceInfo.h
 
-@interface AMPDeviceInfo : NSObject
+@interface RakamDeviceInfo : NSObject
 
 -(id) init;
 @property (readonly) NSString *appVersion;

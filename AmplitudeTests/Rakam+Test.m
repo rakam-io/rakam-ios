@@ -1,16 +1,16 @@
 //
-//  Amplitude+Test.m
-//  Amplitude
+//  Rakam+Test.m
+//  Rakam
 //
 //  Created by Allan on 3/11/15.
-//  Copyright (c) 2015 Amplitude. All rights reserved.
+//  Copyright (c) 2015 Rakam. All rights reserved.
 //
 
-#import "Amplitude.h"
-#import "Amplitude+Test.h"
-#import "AMPDatabaseHelper.h"
+#import "Rakam.h"
+#import "Rakam+Test.h"
+#import "RakamDatabaseHelper.h"
 
-@implementation Amplitude (Test)
+@implementation Rakam (Test)
 
 @dynamic backgroundQueue;
 @dynamic initializerQueue;
@@ -31,22 +31,22 @@
 }
 
 - (NSDictionary *)getEvent:(NSInteger) fromEnd {
-    NSArray *events = [[AMPDatabaseHelper getDatabaseHelper] getEvents:-1 limit:-1];
+    NSArray *events = [[RakamDatabaseHelper getDatabaseHelper] getEvents:-1 limit:-1];
     return [events objectAtIndex:[events count] - fromEnd - 1];
 }
 
 - (NSDictionary *)getLastEvent {
-    NSArray *events = [[AMPDatabaseHelper getDatabaseHelper] getEvents:-1 limit:-1];
+    NSArray *events = [[RakamDatabaseHelper getDatabaseHelper] getEvents:-1 limit:-1];
     return [events lastObject];
 }
 
 - (NSDictionary *)getLastIdentify {
-    NSArray *identifys = [[AMPDatabaseHelper getDatabaseHelper] getIdentifys:-1 limit:-1];
+    NSArray *identifys = [[RakamDatabaseHelper getDatabaseHelper] getIdentifys:-1 limit:-1];
     return [identifys lastObject];
 }
 
 - (NSUInteger)queuedEventCount {
-    return [[AMPDatabaseHelper getDatabaseHelper] getEventCount];
+    return [[RakamDatabaseHelper getDatabaseHelper] getEventCount];
 }
 
 - (void)flushUploads:(void (^)())handler {

@@ -3,7 +3,7 @@
 //  SessionTests
 //
 //  Created by Curtis on 9/24/14.
-//  Copyright (c) 2014 Amplitude. All rights reserved.
+//  Copyright (c) 2014 Rakam. All rights reserved.
 //
 //  NOTE: Having a lot of OCMock partialMockObjects causes tests to be flakey.
 //        Combined a lot of tests into one large test so they share a single
@@ -14,8 +14,8 @@
 #import <XCTest/XCTest.h>
 #import <UIKit/UIKit.h>
 #import <OCMock/OCMock.h>
-#import "Amplitude.h"
-#import "Amplitude+Test.h"
+#import "Rakam.h"
+#import "Rakam+Test.h"
 #import "BaseTestCase.h"
 
 @interface SessionTests : BaseTestCase
@@ -41,7 +41,7 @@
     // mock amplitude object and verify enterForeground not called
     id mockAmplitude = [OCMockObject partialMockForObject:self.amplitude];
     [[mockAmplitude reject] enterForeground];
-    [mockAmplitude initializeApiKey:apiKey];
+    [mockAmplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey];
     [mockAmplitude flushQueueWithQueue:[mockAmplitude initializerQueue]];
     [mockAmplitude flushQueue];
     [mockAmplitude verify];
@@ -55,7 +55,7 @@
 
     id mockAmplitude = [OCMockObject partialMockForObject:self.amplitude];
     [[mockAmplitude expect] enterForeground];
-    [mockAmplitude initializeApiKey:apiKey];
+    [mockAmplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey];
     [mockAmplitude flushQueueWithQueue:[mockAmplitude initializerQueue]];
     [mockAmplitude flushQueue];
     [mockAmplitude verify];
@@ -69,7 +69,7 @@
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:1000];
     [[[mockAmplitude expect] andReturnValue:OCMOCK_VALUE(date)] currentTime];
 
-    [mockAmplitude initializeApiKey:apiKey userId:nil];
+    [mockAmplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey userId:nil];
     [mockAmplitude flushQueueWithQueue:[mockAmplitude initializerQueue]];
     [mockAmplitude flushQueue];
     XCTAssertEqual([mockAmplitude queuedEventCount], 0);
@@ -123,7 +123,7 @@
     [[[mockAmplitude expect] andReturnValue:OCMOCK_VALUE(date6)] currentTime];
     [mockAmplitude logEvent:@"No Session" withEventProperties:nil outOfSession:NO];
     [mockAmplitude flushQueue];
-    XCTAssert([[mockAmplitude getLastEvent][@"session_id"]
+    XCTAssert([[mockAmplitude getLastEvent][@"properties"][@"session_id"]
                isEqualToNumber:[NSNumber numberWithLongLong:1000000 + self.amplitude.minTimeBetweenSessionsMillis]]);
 
     NSDate *date7 = [NSDate dateWithTimeIntervalSince1970:3001];
@@ -131,7 +131,7 @@
     // An out of session event should have session_id = -1
     [mockAmplitude logEvent:@"No Session" withEventProperties:nil outOfSession:YES];
     [mockAmplitude flushQueue];
-    XCTAssert([[mockAmplitude getLastEvent][@"session_id"]
+    XCTAssert([[mockAmplitude getLastEvent][@"properties"][@"session_id"]
                isEqualToNumber:[NSNumber numberWithLongLong:-1]]);
 
     // An out of session event should not continue the session
@@ -139,7 +139,7 @@
 }
 
 - (void)testEnterBackgroundDoesNotTrackEvent {
-    [self.amplitude initializeApiKey:apiKey userId:nil];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] : apiKey userId:nil];
     [self.amplitude flushQueueWithQueue:self.amplitude.initializerQueue];
 
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
@@ -155,13 +155,13 @@
     [[[mockAmplitude expect] andReturnValue:OCMOCK_VALUE(date)] currentTime];
     [mockAmplitude setTrackingSessionEvents:YES];
 
-    [mockAmplitude initializeApiKey:apiKey userId:nil];
+    [mockAmplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey userId:nil];
     [mockAmplitude flushQueueWithQueue:[mockAmplitude initializerQueue]];
     [mockAmplitude flushQueue];
 
     XCTAssertEqual([mockAmplitude queuedEventCount], 1);
-    XCTAssertEqual([[mockAmplitude getLastEvent][@"session_id"] longLongValue], 1000000);
-    XCTAssertEqualObjects([mockAmplitude getLastEvent][@"event_type"], kAMPSessionStartEvent);
+    XCTAssertEqual([[mockAmplitude getLastEvent][@"properties"][@"session_id"] longLongValue], 1000000);
+    XCTAssertEqualObjects([mockAmplitude getLastEvent][@"collection"], kRKMSessionStartEvent);
 
 
     // test end session with tracking session events
@@ -177,12 +177,12 @@
     long long expectedSessionId = 1000000 + self.amplitude.minTimeBetweenSessionsMillis;
     XCTAssertEqual([mockAmplitude sessionId], expectedSessionId);
 
-    XCTAssertEqual([[self.amplitude getEvent:1][@"session_id"] longLongValue], 1000000);
-    XCTAssertEqualObjects([self.amplitude getEvent:1][@"event_type"], kAMPSessionEndEvent);
-    XCTAssertEqual([[self.amplitude getEvent:1][@"timestamp"] longLongValue], 1000000);
+    XCTAssertEqual([[self.amplitude getEvent:1][@"properties"][@"session_id"] longLongValue], 1000000);
+    XCTAssertEqualObjects([self.amplitude getEvent:1][@"collection"], kRKMSessionEndEvent);
+    XCTAssertEqual([[self.amplitude getEvent:1][@"properties"][@"_time"] longLongValue], 1000000);
 
-    XCTAssertEqual([[self.amplitude getLastEvent][@"session_id"] longLongValue], expectedSessionId);
-    XCTAssertEqualObjects([self.amplitude getLastEvent][@"event_type"], kAMPSessionStartEvent);
+    XCTAssertEqual([[self.amplitude getLastEvent][@"properties"][@"session_id"] longLongValue], expectedSessionId);
+    XCTAssertEqualObjects([self.amplitude getLastEvent][@"collection"], kRKMSessionStartEvent);
 
     // test in session identify with app in background
     [[[mockAmplitude expect] andReturnValue:OCMOCK_VALUE(date2)] currentTime];
@@ -190,7 +190,7 @@
 
     NSDate *date3 = [NSDate dateWithTimeIntervalSince1970:1000 + 2 * self.amplitude.minTimeBetweenSessionsMillis];
     [[[mockAmplitude expect] andReturnValue:OCMOCK_VALUE(date3)] currentTime];
-    AMPIdentify *identify = [[AMPIdentify identify] set:@"key" value:@"value"];
+    RakamIdentify *identify = [[RakamIdentify identify] set:@"key" value:@"value"];
     [mockAmplitude identify:identify outOfSession:NO];
     [mockAmplitude flushQueue];
     XCTAssertEqual([mockAmplitude queuedEventCount], 5); // triggers session events
@@ -209,13 +209,13 @@
     [[[mockAmplitude expect] andReturnValue:OCMOCK_VALUE(date)] currentTime];
     [mockAmplitude setTrackingSessionEvents:YES];
 
-    [mockAmplitude initializeApiKey:apiKey userId:nil];
+    [mockAmplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey userId:nil];
     [mockAmplitude flushQueueWithQueue:[mockAmplitude initializerQueue]];
     [mockAmplitude flushQueue];
 
     XCTAssertEqual([mockAmplitude queuedEventCount], 1);
-    XCTAssertEqual([[mockAmplitude getLastEvent][@"session_id"] longLongValue], 21474836470000);
-    XCTAssertEqualObjects([mockAmplitude getLastEvent][@"event_type"], kAMPSessionStartEvent);
+    XCTAssertEqual([[mockAmplitude getLastEvent][@"properties"][@"session_id"] longLongValue], 21474836470000);
+    XCTAssertEqualObjects([mockAmplitude getLastEvent][@"collection"], kRKMSessionStartEvent);
 
 
     // test end session with tracking session events
@@ -230,28 +230,28 @@
 
     XCTAssertEqual([mockAmplitude sessionId], 214748364700000);
 
-    XCTAssertEqual([[self.amplitude getEvent:1][@"session_id"] longLongValue], 21474836470000);
-    XCTAssertEqualObjects([self.amplitude getEvent:1][@"event_type"], kAMPSessionEndEvent);
+    XCTAssertEqual([[self.amplitude getEvent:1][@"properties"][@"session_id"] longLongValue], 21474836470000);
+    XCTAssertEqualObjects([self.amplitude getEvent:1][@"collection"], kRKMSessionEndEvent);
 
-    XCTAssertEqual([[self.amplitude getLastEvent][@"session_id"] longLongValue], 214748364700000);
-    XCTAssertEqualObjects([self.amplitude getLastEvent][@"event_type"], kAMPSessionStartEvent);
+    XCTAssertEqual([[self.amplitude getLastEvent][@"properties"][@"session_id"] longLongValue], 214748364700000);
+    XCTAssertEqualObjects([self.amplitude getLastEvent][@"collection"], kRKMSessionStartEvent);
 }
 
 - (void)testSkipSessionCheckWhenLoggingSessionEvents {
-    AMPDatabaseHelper *dbHelper = [AMPDatabaseHelper getDatabaseHelper];
+    RakamDatabaseHelper *dbHelper = [RakamDatabaseHelper getDatabaseHelper];
 
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:1000];
     NSNumber *timestamp = [NSNumber numberWithLongLong:[date timeIntervalSince1970] * 1000];
     [dbHelper insertOrReplaceKeyLongValue:@"previous_session_id" value:timestamp];
 
     self.amplitude.trackingSessionEvents = YES;
-    [self.amplitude initializeApiKey:apiKey userId:nil];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] : apiKey userId:nil];
 
     [self.amplitude flushQueue];
     XCTAssertEqual([dbHelper getEventCount], 2);
     NSArray *events = [dbHelper getEvents:-1 limit:2];
-    XCTAssertEqualObjects(events[0][@"event_type"], kAMPSessionEndEvent);
-    XCTAssertEqualObjects(events[1][@"event_type"], kAMPSessionStartEvent);
+    XCTAssertEqualObjects(events[0][@"collection"], kRKMSessionEndEvent);
+    XCTAssertEqualObjects(events[1][@"collection"], kRKMSessionStartEvent);
 }
 
 @end

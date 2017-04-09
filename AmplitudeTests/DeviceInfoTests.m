@@ -3,27 +3,27 @@
 //  DeviceInfoTests
 //
 //  Created by Allan on 4/21/15.
-//  Copyright (c) 2015 Amplitude. All rights reserved.
+//  Copyright (c) 2015 Rakam. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 #import <UIKit/UIKit.h>
 #import <OCMock/OCMock.h>
-#import "AMPConstants.h"
-#import "AMPDeviceInfo.h"
-#import "AMPARCMacros.h"
+#import "RakamConstants.h"
+#import "RakamDeviceInfo.h"
+#import "RakamARCMacros.h"
 
 @interface DeviceInfoTests : XCTestCase
 
 @end
 
 @implementation DeviceInfoTests {
-    AMPDeviceInfo *_deviceInfo;
+    RakamDeviceInfo *_deviceInfo;
 }
 
 - (void)setUp {
     [super setUp];
-    _deviceInfo = [[AMPDeviceInfo alloc] init];
+    _deviceInfo = [[RakamDeviceInfo alloc] init];
 }
 
 - (void)tearDown {
@@ -35,11 +35,11 @@
     id mockBundle = [OCMockObject niceMockForClass:[NSBundle class]];
     [[[mockBundle stub] andReturn:mockBundle] mainBundle];
     NSDictionary *mockDictionary = @{
-        @"CFBundleShortVersionString": kAMPVersion
+        @"CFBundleShortVersionString": kRKMVersion
     };
     OCMStub([mockBundle infoDictionary]).andReturn(mockDictionary);
     
-    XCTAssertEqualObjects(kAMPVersion, _deviceInfo.appVersion);
+    XCTAssertEqualObjects(kRKMVersion, _deviceInfo.appVersion);
     [mockBundle stopMocking];
 }
 
@@ -84,8 +84,8 @@
 
 
 - (void) testGenerateUUID {
-    NSString *a = [AMPDeviceInfo generateUUID];
-    NSString *b = [AMPDeviceInfo generateUUID];
+    NSString *a = [RakamDeviceInfo generateUUID];
+    NSString *b = [RakamDeviceInfo generateUUID];
     XCTAssertNotNil(a);
     XCTAssertNotNil(b);
     XCTAssertNotEqual(a, b);

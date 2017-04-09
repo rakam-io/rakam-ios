@@ -1,15 +1,15 @@
 //
 //  IdentifyTests.m
-//  Amplitude
+//  Rakam
 //
 //  Created by Daniel Jih on 10/5/15.
-//  Copyright © 2015 Amplitude. All rights reserved.
+//  Copyright © 2015 Rakam. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
-#import "AMPIdentify.h"
-#import "AMPARCMacros.h"
-#import "AMPConstants.h"
+#import "RakamIdentify.h"
+#import "RakamARCMacros.h"
+#import "RakamConstants.h"
 
 @interface IdentifyTests : XCTestCase
 
@@ -48,7 +48,7 @@
     NSString *property7 = @"array value";
     NSArray *value7 = [NSArray array];
 
-    AMPIdentify *identify = [[AMPIdentify identify] add:property1 value:value1];
+    RakamIdentify *identify = [[RakamIdentify identify] add:property1 value:value1];
     [[[identify add:property2 value:value2] add:property3 value:value3] add:property4 value:value4];
     [[[identify add:property5 value:value5] add:property6 value:value6] add:property7 value:value7];
 
@@ -65,7 +65,7 @@
     [operations setObject:value6 forKey:property6];
 
     NSMutableDictionary *expected = [NSMutableDictionary dictionary];
-    [expected setObject:operations forKey:AMP_OP_ADD];
+    [expected setObject:operations forKey:RKM_OP_ADD];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }
@@ -83,7 +83,7 @@
     NSString *property4 = @"array value";
     NSArray *value4 = [NSArray array];
 
-    AMPIdentify *identify = [[AMPIdentify identify] set:property1 value:value1];
+    RakamIdentify *identify = [[RakamIdentify identify] set:property1 value:value1];
     [[[identify set:property2 value:value2] set:property3 value:value3] set:property4 value:value4];
 
     // identify should ignore this since duplicate key
@@ -97,7 +97,7 @@
     [operations setObject:value4 forKey:property4];
 
     NSMutableDictionary *expected = [NSMutableDictionary dictionary];
-    [expected setObject:operations forKey:AMP_OP_SET];
+    [expected setObject:operations forKey:RKM_OP_SET];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }
@@ -115,7 +115,7 @@
     NSString *property4 = @"array value";
     NSArray *value4 = [NSArray array];
 
-    AMPIdentify *identify = [[AMPIdentify identify] setOnce:property1 value:value1];
+    RakamIdentify *identify = [[RakamIdentify identify] setOnce:property1 value:value1];
     [[[identify setOnce:property2 value:value2] setOnce:property3 value:value3] setOnce:property4 value:value4];
 
     // identify should ignore this since duplicate key
@@ -129,7 +129,7 @@
     [operations setObject:value4 forKey:property4];
 
     NSMutableDictionary *expected = [NSMutableDictionary dictionary];
-    [expected setObject:operations forKey:AMP_OP_SET_ONCE];
+    [expected setObject:operations forKey:RKM_OP_SET_ONCE];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }
@@ -149,7 +149,7 @@
     [value4 addObject:@"test"];
     [value4 addObject:[NSNumber numberWithInt:15]];
 
-    AMPIdentify *identify = [[AMPIdentify identify] append:property1 value:value1];
+    RakamIdentify *identify = [[RakamIdentify identify] append:property1 value:value1];
     [[[identify append:property2 value:value2] append:property3 value:value3] append:property4 value:value4];
 
     // identify should ignore this since duplicate key
@@ -163,7 +163,7 @@
     [operations setObject:value4 forKey:property4];
 
     NSMutableDictionary *expected = [NSMutableDictionary dictionary];
-    [expected setObject:operations forKey:AMP_OP_APPEND];
+    [expected setObject:operations forKey:RKM_OP_APPEND];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }
@@ -183,7 +183,7 @@
     [value4 addObject:@"test"];
     [value4 addObject:[NSNumber numberWithInt:15]];
 
-    AMPIdentify *identify = [[AMPIdentify identify] prepend:property1 value:value1];
+    RakamIdentify *identify = [[RakamIdentify identify] prepend:property1 value:value1];
     [[[identify prepend:property2 value:value2] prepend:property3 value:value3] prepend:property4 value:value4];
 
     // identify should ignore this since duplicate key
@@ -197,7 +197,7 @@
     [operations setObject:value4 forKey:property4];
 
     NSMutableDictionary *expected = [NSMutableDictionary dictionary];
-    [expected setObject:operations forKey:AMP_OP_PREPEND];
+    [expected setObject:operations forKey:RKM_OP_PREPEND];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }
@@ -206,7 +206,7 @@
     NSString *property1 = @"testProperty1";
     NSString *property2 = @"testProperty2";
 
-    AMPIdentify *identify = [AMPIdentify identify];
+    RakamIdentify *identify = [RakamIdentify identify];
     [[identify unset:property1] unset:property2];
 
     NSMutableDictionary *operations = [NSMutableDictionary dictionary];
@@ -214,7 +214,7 @@
     [operations setObject:@"-" forKey:property2];
 
     NSMutableDictionary *expected = [NSMutableDictionary dictionary];
-    [expected setObject:operations forKey:AMP_OP_UNSET];
+    [expected setObject:operations forKey:RKM_OP_UNSET];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }
@@ -236,7 +236,7 @@
     [value5 addObject:@"test"];
     [value5 addObject:[NSNumber numberWithFloat:14.23456]];
 
-    AMPIdentify *identify = [[AMPIdentify identify] setOnce:property1 value:value1];
+    RakamIdentify *identify = [[RakamIdentify identify] setOnce:property1 value:value1];
     [[[[identify add:property2 value:value2] set:property3 value:value3] unset:property4] append:property5 value:value5];
 
     // identify should ignore this since duplicate key
@@ -249,7 +249,7 @@
     NSDictionary *unset = [NSDictionary dictionaryWithObject:@"-" forKey:property4];
     NSDictionary *append = [NSDictionary dictionaryWithObject:value5 forKey:property5];
 
-    NSDictionary *expected = [NSDictionary dictionaryWithObjectsAndKeys:setOnce, AMP_OP_SET_ONCE, add, AMP_OP_ADD, set, AMP_OP_SET, unset, AMP_OP_UNSET, append, AMP_OP_APPEND, nil];
+    NSDictionary *expected = [NSDictionary dictionaryWithObjectsAndKeys:setOnce, RKM_OP_SET_ONCE, add, RKM_OP_ADD, set, RKM_OP_SET, unset, RKM_OP_UNSET, append, RKM_OP_APPEND, nil];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }
@@ -260,14 +260,14 @@
     NSNumber *value2 = [NSNumber numberWithDouble:0.123];
     NSNumber *value3 = [NSNumber numberWithBool:YES];
 
-    AMPIdentify *identify = [AMPIdentify identify];
+    RakamIdentify *identify = [RakamIdentify identify];
     [[[[identify setOnce:property value:value1] add:property value:value2] set:property value:value3] unset:property];
 
     NSMutableDictionary *operations = [NSMutableDictionary dictionary];
     [operations setObject:value1 forKey:property];
 
     NSMutableDictionary *expected = [NSMutableDictionary dictionary];
-    [expected setObject:operations forKey:AMP_OP_SET_ONCE];
+    [expected setObject:operations forKey:RKM_OP_SET_ONCE];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }
@@ -277,14 +277,14 @@
     NSString *key = @"url";
     NSURL *url = [NSURL URLWithString:urlString];
 
-    AMPIdentify *identify = [AMPIdentify identify];
+    RakamIdentify *identify = [RakamIdentify identify];
     [identify set:key value:url]; // should coerce NSURL object into a string
 
     NSMutableDictionary *operations = [NSMutableDictionary dictionary];
     [operations setObject:urlString forKey:key];
 
     NSMutableDictionary *expected = [NSMutableDictionary dictionary];
-    [expected setObject:operations forKey:AMP_OP_SET];
+    [expected setObject:operations forKey:RKM_OP_SET];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }
@@ -295,11 +295,11 @@
     NSNumber *value2 = [NSNumber numberWithDouble:0.123];
     NSNumber *value3 = [NSNumber numberWithBool:YES];
 
-    AMPIdentify *identify = [[AMPIdentify identify] clearAll];
+    RakamIdentify *identify = [[RakamIdentify identify] clearAll];
     [[[[identify setOnce:property value:value1] add:property value:value2] set:property value:value3] unset:property];
 
     NSMutableDictionary *expected = [NSMutableDictionary dictionary];
-    [expected setObject:@"-" forKey:AMP_OP_CLEAR_ALL];
+    [expected setObject:@"-" forKey:RKM_OP_CLEAR_ALL];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }
@@ -310,7 +310,7 @@
     NSNumber *value2 = [NSNumber numberWithDouble:0.123];
     NSNumber *value3 = [NSNumber numberWithBool:YES];
 
-    AMPIdentify *identify = [AMPIdentify identify];
+    RakamIdentify *identify = [RakamIdentify identify];
     [[[[identify setOnce:property value:value1] add:property value:value2] set:property value:value3] unset:property];
     [identify clearAll];
 
@@ -318,7 +318,7 @@
     [operations setObject:value1 forKey:property];
 
     NSMutableDictionary *expected = [NSMutableDictionary dictionary];
-    [expected setObject:operations forKey:AMP_OP_SET_ONCE];
+    [expected setObject:operations forKey:RKM_OP_SET_ONCE];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }

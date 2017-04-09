@@ -1,12 +1,12 @@
 //
-//  AMPUtils.h
+//  RakamUtils.h
 //  Pods
 //
 //  Created by Daniel Jih on 10/4/15.
 //
 //
 
-@interface AMPUtils : NSObject
+@interface RakamUtils : NSObject
 
 + (NSString*) generateUUID;
 + (id) makeJSONSerializable:(id) obj;

@@ -1,13 +1,13 @@
 //
-//  AMPRevenue.h
-//  Amplitude
+//  RakamRevenue.h
+//  Rakam
 //
 //  Created by Daniel Jih on 04/18/16.
-//  Copyright © 2016 Amplitude. All rights reserved.
+//  Copyright © 2016 Rakam. All rights reserved.
 //
 
 /**
- `AMPRevenue` objects are a wrapper for revenue data, which get passed to the `logRevenueV2` method to send to Amplitude servers.
+ `RKMRevenue` objects are a wrapper for revenue data, which get passed to the `logRevenueV2` method to send to Amplitude servers.
 
  **Note:** price is a required field. If quantity is not specified, then defaults to 1.
 
@@ -15,16 +15,16 @@
 
  Each method updates a revenue property in the Revenue object, and returns the same Revenue object, allowing you to chain multiple method calls together.
 
- Here is an example of how to use `AMPRevenue` to send revenue data:
+ Here is an example of how to use `RKMRevenue` to send revenue data:
 
-    AMPRevenue *revenue = [[[AMPRevenue revenue] setProductIdentifier:@"productIdentifier"] setQuantity:3];
+    RKMRevenue *revenue = [[[RKMRevenue revenue] setProductIdentifier:@"productIdentifier"] setQuantity:3];
     [revenue setPrice:[NSNumber numberWithDouble:3.99]];
     [[Amplitude instance] logRevenueV2:revenue];
 
  See [Tracking Revenue](https://github.com/amplitude/Amplitude-iOS#tracking-revenue) for more information about logging Revenue.
  */
 
-@interface AMPRevenue : NSObject
+@interface RakamRevenue : NSObject
 
 /**-----------------------------------------------------------------------------
  * @name Required Revenue Fields
@@ -75,14 +75,14 @@
 @property (nonatomic, strong, readonly) NSDictionary *properties;
 
 /**-----------------------------------------------------------------------------
- * @name Creating an AMPRevenue Object
+ * @name Creating an RKMRevenue Object
  * -----------------------------------------------------------------------------
  */
 
 /**
- Creates a new [AMPRevenue](#) object.
+ Creates a new [RKMRevenue](#) object.
 
- @returns a new [AMPRevenue](#) object.
+ @returns a new [RKMRevenue](#) object.
  */
 + (instancetype)revenue;
 
@@ -101,9 +101,9 @@
 
  @param productIdentifier The value for the product identifier. Empty strings are ignored.
 
- @returns the same [AMPRevenue](#) object, allowing you to chain multiple method calls together.
+ @returns the same [RKMRevenue](#) object, allowing you to chain multiple method calls together.
  */
-- (AMPRevenue*)setProductIdentifier:(NSString*) productIdentifier;
+- (RakamRevenue*)setProductIdentifier:(NSString*) productIdentifier;
 
 /**
  Set a value for the quantity.
@@ -112,9 +112,9 @@
 
  @param quantity Integer value for the quantity. Defaults to 1 if not specified.
 
- @returns the same [AMPRevenue](#) object, allowing you to chain multiple method calls together.
+ @returns the same [RKMRevenue](#) object, allowing you to chain multiple method calls together.
  */
-- (AMPRevenue*)setQuantity:(NSInteger) quantity;
+- (RakamRevenue*)setQuantity:(NSInteger) quantity;
 
 
 /**
@@ -124,9 +124,9 @@
 
  @param price The value for the price.
 
- @returns the same [AMPRevenue](#) object, allowing you to chain multiple method calls together.
+ @returns the same [RKMRevenue](#) object, allowing you to chain multiple method calls together.
  */
-- (AMPRevenue*)setPrice:(NSNumber*) price;
+- (RakamRevenue*)setPrice:(NSNumber*) price;
 
 
 /**
@@ -134,9 +134,9 @@
 
  @param revenueType String value for the revenue type.
 
- @returns the same [AMPRevenue](#) object, allowing you to chain multiple method calls together.
+ @returns the same [RKMRevenue](#) object, allowing you to chain multiple method calls together.
  */
-- (AMPRevenue*)setRevenueType:(NSString*) revenueType;
+- (RakamRevenue*)setRevenueType:(NSString*) revenueType;
 
 
 /**
@@ -144,23 +144,23 @@
 
  @param receipt The receipt data from the App Store.
 
- @returns the same [AMPRevenue](#) object, allowing you to chain multiple method calls together.
+ @returns the same [RKMRevenue](#) object, allowing you to chain multiple method calls together.
 
  @see [Revenue Validation](https://github.com/amplitude/amplitude-ios#revenue-verification)
  @see [Validating Receipts with the App Store](https://developer.apple.com/library/ios/releasenotes/General/ValidateAppStoreReceipt/Chapters/ValidateRemotely.html#//apple_ref/doc/uid/TP40010573-CH104-SW1)
  */
-- (AMPRevenue*)setReceipt:(NSData*) receipt;
+- (RakamRevenue*)setReceipt:(NSData*) receipt;
 
 /**
  Set event properties for the revenue event.
 
  @param eventProperties An `NSDictionary` of event properties to set for the revenue event.
 
- @returns the same [AMPRevenue](#) object, allowing you to chain multiple method calls together.
+ @returns the same [RKMRevenue](#) object, allowing you to chain multiple method calls together.
 
  @see [Setting Event Properties](https://github.com/amplitude/amplitude-ios#setting-event-properties)
  */
-- (AMPRevenue*)setEventProperties:(NSDictionary*) eventProperties;
+- (RakamRevenue*)setEventProperties:(NSDictionary*) eventProperties;
 
 
 - (NSDictionary*)toNSDictionary;

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Amplitude Class Reference</title>
+	<title>Rakam Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -14,11 +14,11 @@
 		<div class="container" class="hide-in-xcode">
 			
 			<h1 id="library-title">
-				<a href="../index.html">Amplitude-iOS </a>
+				<a href="../index.html">Rakam-iOS </a>
 			</h1>
 
 			<p id="developer-home">
-				<a href="../index.html">Amplitude</a>
+				<a href="../index.html">Rakam</a>
 			</p>
 			
 		</div>
@@ -185,7 +185,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">Amplitude Class Reference</h1>
+					<h1 class="title">Rakam Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -194,7 +194,7 @@
 	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>Amplitude.h<br />Amplitude.m</td>
+	<td>Rakam.h<br />Rakam.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -204,30 +204,30 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Amplitude iOS SDK.</p>
+						<p>Rakam iOS SDK.</p>
 
-<p>Use the Amplitude SDK to track events in your application.</p>
+<p>Use the Rakam SDK to track events in your application.</p>
 
 <p>Setup:</p>
 
 <ol>
-<li>In every file that uses analytics, import Amplitude.h at the top <code>#import "Amplitude.h"</code></li>
-<li>Be sure to initialize the API in your didFinishLaunchingWithOptions delegate <code>[[Amplitude instance] initializeApiKey:@"YOUR_API_KEY_HERE"];</code></li>
-<li>Track an event anywhere in the app <code>[[Amplitude instance] logEvent:@"EVENT_IDENTIFIER_HERE"];</code></li>
+<li>In every file that uses analytics, import Rakam.h at the top <code>#import "Rakam.h"</code></li>
+<li>Be sure to initialize the API in your didFinishLaunchingWithOptions delegate <code>[[Rakam instance] initializeApiKey:@"YOUR_API_KEY_HERE"];</code></li>
+<li>Track an event anywhere in the app <code>[[Rakam instance] logEvent:@"EVENT_IDENTIFIER_HERE"];</code></li>
 <li><p>You can attach additional data to any event by passing a NSDictionary object:</p>
 
 <pre><code> NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
  [eventProperties setValue:@"VALUE_GOES_HERE" forKey:@"KEY_GOES_HERE"];
- [[Amplitude instance] logEvent:@"Compute Hash" withEventProperties:eventProperties];
+ [[Rakam instance] logEvent:@"Compute Hash" withEventProperties:eventProperties];
 </code></pre></li>
 </ol>
 
 
-<p><strong>Note:</strong> you should call SDK methods on an Amplitude instance, for example logging events with the default instance: <code>[[Amplitude instance] logEvent:@"testEvent"];</code></p>
+<p><strong>Note:</strong> you should call SDK methods on an Rakam instance, for example logging events with the default instance: <code>[[Rakam instance] logEvent:@"testEvent"];</code></p>
 
-<p><strong>Note:</strong> the SDK supports tracking data to multiple Amplitude apps, via separate named instances. For example: <code>[[Amplitude instanceWithName:@"app1"] logEvent:@"testEvent"];</code> See <a href="https://github.com/amplitude/amplitude-ios#tracking-events-to-multiple-amplitude-apps">Tracking Events to Multiple Apps</a>.</p>
+<p><strong>Note:</strong> the SDK supports tracking data to multiple Rakam apps, via separate named instances. For example: <code>[[Rakam instanceWithName:@"app1"] logEvent:@"testEvent"];</code> See <a href="https://github.com/amplitude/amplitude-ios#tracking-events-to-multiple-amplitude-apps">Tracking Events to Multiple Apps</a>.</p>
 
-<p>For more details on the setup and usage, be sure to checkout the <a href="https://github.com/amplitude/Amplitude-iOS#amplitude-ios-sdk">README</a></p>
+<p>For more details on the setup and usage, be sure to checkout the <a href="https://github.com/amplitude/Rakam-iOS#amplitude-ios-sdk">README</a></p>
 					</div>
 					
 					
@@ -254,7 +254,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>  API key for your Amplitude App.</p>
+				<p>  API key for your Rakam App.</p>
 			</div>
 			
 		    
@@ -271,7 +271,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>  API key for your Amplitude App.</p>
+				<p>  API key for your Rakam App.</p>
 			</div>
 			
 
@@ -282,7 +282,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -328,7 +328,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -374,7 +374,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -420,7 +420,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -438,7 +438,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Whether or to opt the current user out of tracking. If true then this blocks the logging of any events and properties, and blocks the sending of events to Amplitude servers.</p>
+				<p>Whether or to opt the current user out of tracking. If true then this blocks the logging of any events and properties, and blocks the sending of events to Rakam servers.</p>
 			</div>
 			
 		    
@@ -455,7 +455,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Whether or to opt the current user out of tracking. If true then this blocks the logging of any events and properties, and blocks the sending of events to Amplitude servers.</p>
+				<p>Whether or to opt the current user out of tracking. If true then this blocks the logging of any events and properties, and blocks the sending of events to Rakam servers.</p>
 			</div>
 			
 
@@ -466,7 +466,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -520,7 +520,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -566,7 +566,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -612,7 +612,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -658,7 +658,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -704,7 +704,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -750,7 +750,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -760,8 +760,8 @@
 						</div>
 						
 
-						<a title="Fetching Amplitude SDK instance" name="task_Fetching Amplitude SDK instance"></a>
-						<h2 class="task-title">Fetching Amplitude SDK instance</h2>
+						<a title="Fetching Rakam SDK instance" name="task_Fetching Rakam SDK instance"></a>
+						<h2 class="task-title">Fetching Rakam SDK instance</h2>
 
 						<div class="task-list">
 							<div class="section-method">
@@ -781,7 +781,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>+ (Amplitude *)instance</code></div>
+			<div class="method-subsection method-declaration"><code>+ (Rakam *)instance</code></div>
 
 		    
 			
@@ -789,7 +789,7 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>the default Amplitude SDK instance</p>
+				<p>the default Rakam SDK instance</p>
 			</div>
 			
 
@@ -809,7 +809,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -827,12 +827,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>This fetches a named SDK <a href="#//api/name/instance">instance</a>. Use this if logging events to multiple Amplitude apps.</p>
+				<p>This fetches a named SDK <a href="#//api/name/instance">instance</a>. Use this if logging events to multiple Rakam apps.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>+ (Amplitude *)instanceWithName:(NSString *)<em>instanceName</em></code></div>
+			<div class="method-subsection method-declaration"><code>+ (Rakam *)instanceWithName:(NSString *)<em>instanceName</em></code></div>
 
 		    
 			
@@ -852,7 +852,7 @@
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>the Amplitude SDK <a href="#//api/name/instance">instance</a> corresponding to <a href="#//api/name/instanceName"><code>instanceName</code></a></p>
+				<p>the Rakam SDK <a href="#//api/name/instance">instance</a> corresponding to <a href="#//api/name/instanceName"><code>instanceName</code></a></p>
 			</div>
 			
 
@@ -861,7 +861,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>This fetches a named SDK <a href="#//api/name/instance">instance</a>. Use this if logging events to multiple Amplitude apps.</p>
+				<p>This fetches a named SDK <a href="#//api/name/instance">instance</a>. Use this if logging events to multiple Rakam apps.</p>
 			</div>
 			
 
@@ -872,7 +872,7 @@
 				<h4 class="method-subtitle">See Also</h4>
 				<ul>
 					
-					<li><code><p><a href="https://github.com/amplitude/amplitude-ios#tracking-events-to-multiple-amplitude-apps">Tracking Events to Multiple Amplitude Apps</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/amplitude-ios#tracking-events-to-multiple-amplitude-apps">Tracking Events to Multiple Rakam Apps</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -881,7 +881,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -891,8 +891,8 @@
 						</div>
 						
 
-						<a title="Initialize the Amplitude SDK with your Amplitude API Key" name="task_Initialize the Amplitude SDK with your Amplitude API Key"></a>
-						<h2 class="task-title">Initialize the Amplitude SDK with your Amplitude API Key</h2>
+						<a title="Initialize the Rakam SDK with your Rakam API Key" name="task_Initialize the Rakam SDK with your Rakam API Key"></a>
+						<h2 class="task-title">Initialize the Rakam SDK with your Rakam API Key</h2>
 
 						<div class="task-list">
 							<div class="section-method">
@@ -907,7 +907,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Initializes the Amplitude <a href="#//api/name/instance">instance</a> with your Amplitude API key</p>
+				<p>Initializes the Rakam <a href="#//api/name/instance">instance</a> with your Rakam API key</p>
 			</div>
 			
 		    
@@ -922,7 +922,7 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>apiKey</code></th>
-						<td><p>Your Amplitude key obtained from your dashboard at <a href="https://amplitude.com/settings">https://amplitude.com/settings</a></p></td>
+						<td><p>Your Rakam key obtained from your dashboard at <a href="https://amplitude.com/settings">https://amplitude.com/settings</a></p></td>
 					</tr>
 				
 				</table>
@@ -936,7 +936,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Initializes the Amplitude <a href="#//api/name/instance">instance</a> with your Amplitude API key</p>
+				<p>Initializes the Rakam <a href="#//api/name/instance">instance</a> with your Rakam API key</p>
 
 <p>We recommend you first initialize your class within your &ldquo;didFinishLaunchingWithOptions&rdquo; method inside your app delegate.</p>
 
@@ -951,7 +951,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -969,7 +969,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Initializes the Amplitude <a href="#//api/name/instance">instance</a> with your Amplitude API key and sets a user identifier for the current user.</p>
+				<p>Initializes the Rakam <a href="#//api/name/instance">instance</a> with your Rakam API key and sets a user identifier for the current user.</p>
 			</div>
 			
 		    
@@ -984,7 +984,7 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>apiKey</code></th>
-						<td><p>Your Amplitude key obtained from your dashboard at <a href="https://amplitude.com/settings">https://amplitude.com/settings</a></p></td>
+						<td><p>Your Rakam key obtained from your dashboard at <a href="https://amplitude.com/settings">https://amplitude.com/settings</a></p></td>
 					</tr>
 				
 					<tr>
@@ -1003,7 +1003,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Initializes the Amplitude <a href="#//api/name/instance">instance</a> with your Amplitude API key and sets a user identifier for the current user.</p>
+				<p>Initializes the Rakam <a href="#//api/name/instance">instance</a> with your Rakam API key and sets a user identifier for the current user.</p>
 
 <p>We recommend you first initialize your class within your &ldquo;didFinishLaunchingWithOptions&rdquo; method inside your app delegate.</p>
 
@@ -1018,7 +1018,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -1095,7 +1095,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -1169,7 +1169,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -1241,7 +1241,7 @@
 					
 					<li><code><p><a href="https://github.com/amplitude/amplitude-ios#tracking-events">Tracking Events</a></p></code></li>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#tracking-sessions">Tracking Sessions</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#tracking-sessions">Tracking Sessions</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -1250,7 +1250,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -1322,7 +1322,7 @@
 					
 					<li><code><p><a href="https://github.com/amplitude/amplitude-ios#tracking-events">Tracking Events</a></p></code></li>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#setting-groups">Setting Groups</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#setting-groups">Setting Groups</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -1331,7 +1331,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -1408,9 +1408,9 @@
 					
 					<li><code><p><a href="https://github.com/amplitude/amplitude-ios#tracking-events">Tracking Events</a></p></code></li>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#setting-groups">Setting Groups</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#setting-groups">Setting Groups</a></p></code></li>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#tracking-sessions">Tracking Sessions</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#tracking-sessions">Tracking Sessions</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -1419,7 +1419,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -1501,9 +1501,9 @@
 					
 					<li><code><p><a href="https://github.com/amplitude/amplitude-ios#tracking-events">Tracking Events</a></p></code></li>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#setting-groups">Setting Groups</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#setting-groups">Setting Groups</a></p></code></li>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#tracking-sessions">Tracking Sessions</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#tracking-sessions">Tracking Sessions</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -1512,7 +1512,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -1594,9 +1594,9 @@
 					
 					<li><code><p><a href="https://github.com/amplitude/amplitude-ios#tracking-events">Tracking Events</a></p></code></li>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#setting-groups">Setting Groups</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#setting-groups">Setting Groups</a></p></code></li>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#tracking-sessions">Tracking Sessions</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#tracking-sessions">Tracking Sessions</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -1605,7 +1605,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -1631,7 +1631,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p><strong>Note: this is deprecated</strong> - please use <code>logRevenueV2</code> and <a href="../Classes/AMPRevenue.html"><code>AMPRevenue</code></a></p>
+				<p><strong>Note: this is deprecated</strong> - please use <code>logRevenueV2</code> and <a href="../Classes/RakamRevenue.html"><code>RakamRevenue</code></a></p>
 			</div>
 			
 		    
@@ -1660,11 +1660,11 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p><strong>Note: this is deprecated</strong> - please use <code>logRevenueV2</code> and <a href="../Classes/AMPRevenue.html"><code>AMPRevenue</code></a></p>
+				<p><strong>Note: this is deprecated</strong> - please use <code>logRevenueV2</code> and <a href="../Classes/RakamRevenue.html"><code>RakamRevenue</code></a></p>
 
 <p>Tracks revenue.</p>
 
-<p>To track revenue from a user, call [[Amplitude instance] logRevenue:[NSNumber numberWithDouble:3.99]] each time the user generates revenue. logRevenue: takes in an NSNumber with the dollar amount of the sale as the only argument. This allows us to automatically display data relevant to revenue on the Amplitude website, including average revenue per daily active user (ARPDAU), 7, 30, and 90 day revenue, lifetime value (LTV) estimates, and revenue by advertising campaign cohort and daily/weekly/monthly cohorts.</p>
+<p>To track revenue from a user, call [[Rakam instance] logRevenue:[NSNumber numberWithDouble:3.99]] each time the user generates revenue. logRevenue: takes in an NSNumber with the dollar amount of the sale as the only argument. This allows us to automatically display data relevant to revenue on the Rakam website, including average revenue per daily active user (ARPDAU), 7, 30, and 90 day revenue, lifetime value (LTV) estimates, and revenue by advertising campaign cohort and daily/weekly/monthly cohorts.</p>
 			</div>
 			
 
@@ -1675,7 +1675,7 @@
 				<h4 class="method-subtitle">See Also</h4>
 				<ul>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#backwards-compatibility">LogRevenue Backwards Compatability</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#backwards-compatibility">LogRevenue Backwards Compatability</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -1684,7 +1684,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -1702,7 +1702,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p><strong>Note: this is deprecated</strong> - please use <code>logRevenueV2</code> and <a href="../Classes/AMPRevenue.html"><code>AMPRevenue</code></a></p>
+				<p><strong>Note: this is deprecated</strong> - please use <code>logRevenueV2</code> and <a href="../Classes/RakamRevenue.html"><code>RakamRevenue</code></a></p>
 			</div>
 			
 		    
@@ -1741,9 +1741,9 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p><strong>Note: this is deprecated</strong> - please use <code>logRevenueV2</code> and <a href="../Classes/AMPRevenue.html"><code>AMPRevenue</code></a></p>
+				<p><strong>Note: this is deprecated</strong> - please use <code>logRevenueV2</code> and <a href="../Classes/RakamRevenue.html"><code>RakamRevenue</code></a></p>
 
-<p>Tracks revenue. This allows us to automatically display data relevant to revenue on the Amplitude website, including average revenue per daily active user (ARPDAU), 7, 30, and 90 day revenue, lifetime value (LTV) estimates, and revenue by advertising campaign cohort and daily/weekly/monthly cohorts.</p>
+<p>Tracks revenue. This allows us to automatically display data relevant to revenue on the Rakam website, including average revenue per daily active user (ARPDAU), 7, 30, and 90 day revenue, lifetime value (LTV) estimates, and revenue by advertising campaign cohort and daily/weekly/monthly cohorts.</p>
 			</div>
 			
 
@@ -1754,9 +1754,9 @@
 				<h4 class="method-subtitle">See Also</h4>
 				<ul>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#tracking-revenue">LogRevenueV2</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#tracking-revenue">LogRevenueV2</a></p></code></li>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#backwards-compatibility">LogRevenue Backwards Compatability</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#backwards-compatibility">LogRevenue Backwards Compatability</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -1765,7 +1765,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -1783,7 +1783,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p><strong>Note: this is deprecated</strong> - please use <code>logRevenueV2</code> and <a href="../Classes/AMPRevenue.html"><code>AMPRevenue</code></a></p>
+				<p><strong>Note: this is deprecated</strong> - please use <code>logRevenueV2</code> and <a href="../Classes/RakamRevenue.html"><code>RakamRevenue</code></a></p>
 			</div>
 			
 		    
@@ -1827,11 +1827,11 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p><strong>Note: this is deprecated</strong> - please use <code>logRevenueV2</code> and <a href="../Classes/AMPRevenue.html"><code>AMPRevenue</code></a></p>
+				<p><strong>Note: this is deprecated</strong> - please use <code>logRevenueV2</code> and <a href="../Classes/RakamRevenue.html"><code>RakamRevenue</code></a></p>
 
-<p>Tracks revenue. This allows us to automatically display data relevant to revenue on the Amplitude website, including average revenue per daily active user (ARPDAU), 7, 30, and 90 day revenue, lifetime value (LTV) estimates, and revenue by advertising campaign cohort and daily/weekly/monthly cohorts.</p>
+<p>Tracks revenue. This allows us to automatically display data relevant to revenue on the Rakam website, including average revenue per daily active user (ARPDAU), 7, 30, and 90 day revenue, lifetime value (LTV) estimates, and revenue by advertising campaign cohort and daily/weekly/monthly cohorts.</p>
 
-<p>For validating revenue, use [[Amplitude instance] logRevenue:@&ldquo;com.company.app.productId&rdquo; quantity:1 price:[NSNumber numberWithDouble:3.99] receipt:transactionReceipt]</p>
+<p>For validating revenue, use [[Rakam instance] logRevenue:@&ldquo;com.company.app.productId&rdquo; quantity:1 price:[NSNumber numberWithDouble:3.99] receipt:transactionReceipt]</p>
 			</div>
 			
 
@@ -1842,11 +1842,11 @@
 				<h4 class="method-subtitle">See Also</h4>
 				<ul>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#tracking-revenue">LogRevenueV2</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#tracking-revenue">LogRevenueV2</a></p></code></li>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#backwards-compatibility">LogRevenue Backwards Compatability</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#backwards-compatibility">LogRevenue Backwards Compatability</a></p></code></li>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#revenue-verification">Revenue Verification</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#revenue-verification">Revenue Verification</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -1855,7 +1855,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -1873,12 +1873,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Tracks revenue - API v2. This uses the <a href="../Classes/AMPRevenue.html"><code>AMPRevenue</code></a> object to store transaction properties such as quantity, price, and revenue type. This is the recommended method for tracking revenue in Amplitude.</p>
+				<p>Tracks revenue - API v2. This uses the <a href="../Classes/RakamRevenue.html"><code>RakamRevenue</code></a> object to store transaction properties such as quantity, price, and revenue type. This is the recommended method for tracking revenue in Rakam.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)logRevenueV2:(AMPRevenue *)<em>revenue</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)logRevenueV2:(RakamRevenue *)<em>revenue</em></code></div>
 
 		    
 			
@@ -1887,7 +1887,7 @@
 				<table class="argument-def parameter-def">
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>AMPRevenue</code></th>
+						<th scope="row" class="argument-name"><code>RakamRevenue</code></th>
 						<td><p>object       revenue object contains all revenue information</p></td>
 					</tr>
 				
@@ -1902,11 +1902,11 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Tracks revenue - API v2. This uses the <a href="../Classes/AMPRevenue.html"><code>AMPRevenue</code></a> object to store transaction properties such as quantity, price, and revenue type. This is the recommended method for tracking revenue in Amplitude.</p>
+				<p>Tracks revenue - API v2. This uses the <a href="../Classes/RakamRevenue.html"><code>RakamRevenue</code></a> object to store transaction properties such as quantity, price, and revenue type. This is the recommended method for tracking revenue in Rakam.</p>
 
-<p>For validating revenue, make sure the receipt data is set on the <a href="../Classes/AMPRevenue.html">AMPRevenue</a> object.</p>
+<p>For validating revenue, make sure the receipt data is set on the <a href="../Classes/RakamRevenue.html">RakamRevenue</a> object.</p>
 
-<p>To track revenue from a user, create an <a href="../Classes/AMPRevenue.html">AMPRevenue</a> object each time the user generates revenue, and set the revenue properties (productIdentifier, price, quantity). logRevenuev2: takes in an <a href="../Classes/AMPRevenue.html">AMPRevenue</a> object. This allows us to automatically display data relevant to revenue on the Amplitude website, including average revenue per daily active user (ARPDAU), 7, 30, and 90 day revenue, lifetime value (LTV) estimates, and revenue by advertising campaign cohort and daily/weekly/monthly cohorts.</p>
+<p>To track revenue from a user, create an <a href="../Classes/RakamRevenue.html">RakamRevenue</a> object each time the user generates revenue, and set the revenue properties (productIdentifier, price, quantity). logRevenuev2: takes in an <a href="../Classes/RakamRevenue.html">RakamRevenue</a> object. This allows us to automatically display data relevant to revenue on the Rakam website, including average revenue per daily active user (ARPDAU), 7, 30, and 90 day revenue, lifetime value (LTV) estimates, and revenue by advertising campaign cohort and daily/weekly/monthly cohorts.</p>
 			</div>
 			
 
@@ -1917,7 +1917,7 @@
 				<h4 class="method-subtitle">See Also</h4>
 				<ul>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#tracking-revenue">Tracking Revenue</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#tracking-revenue">Tracking Revenue</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -1926,7 +1926,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -1957,7 +1957,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)identify:(AMPIdentify *)<em>identify</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)identify:(RakamIdentify *)<em>identify</em></code></div>
 
 		    
 			
@@ -1967,7 +1967,7 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>identify</code></th>
-						<td><p>An <a href="../Classes/AMPIdentify.html">AMPIdentify</a> object with the intended user property operations</p></td>
+						<td><p>An <a href="../Classes/RakamIdentify.html">RakamIdentify</a> object with the intended user property operations</p></td>
 					</tr>
 				
 				</table>
@@ -1983,14 +1983,14 @@
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>Update user properties using operations provided via Identify API.</p>
 
-<p>To update user properties, first create an AMPIdentify object. For example if you wanted to set a user&rsquo;s gender, and then increment their karma count by 1, you would do:</p>
+<p>To update user properties, first create an RakamIdentify object. For example if you wanted to set a user&rsquo;s gender, and then increment their karma count by 1, you would do:</p>
 
-<pre><code>AMPIdentify *identify = [[[AMPIdentify identify] set:@"gender" value:@"male"] add:@"karma" value:[NSNumber numberWithInt:1]];
+<pre><code>RakamIdentify *identify = [[[RakamIdentify identify] set:@"gender" value:@"male"] add:@"karma" value:[NSNumber numberWithInt:1]];
 </code></pre>
 
-<p>Then you would pass this AMPIdentify object to the identify function to send to the server:</p>
+<p>Then you would pass this RakamIdentify object to the identify function to send to the server:</p>
 
-<pre><code>[[Amplitude instance] identify:identify];
+<pre><code>[[Rakam instance] identify:identify];
 </code></pre>
 			</div>
 			
@@ -2002,7 +2002,7 @@
 				<h4 class="method-subtitle">See Also</h4>
 				<ul>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#user-properties-and-user-property-operations">User Properties and User Property Operations</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#user-properties-and-user-property-operations">User Properties and User Property Operations</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -2011,7 +2011,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -2034,7 +2034,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)identify:(AMPIdentify *)<em>identify</em> outOfSession:(BOOL)<em>outOfSession</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)identify:(RakamIdentify *)<em>identify</em> outOfSession:(BOOL)<em>outOfSession</em></code></div>
 
 		    
 			
@@ -2044,7 +2044,7 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>identify</code></th>
-						<td><p>An <a href="../Classes/AMPIdentify.html">AMPIdentify</a> object with the intended user property operations</p></td>
+						<td><p>An <a href="../Classes/RakamIdentify.html">RakamIdentify</a> object with the intended user property operations</p></td>
 					</tr>
 				
 					<tr>
@@ -2065,13 +2065,13 @@
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>Update user properties using operations provided via Identify API. If outOfSession is <code>YES</code> then the identify event is logged with a session id of -1 and does not trigger any session-handling logic.</p>
 
-<p>To update user properties, first create an AMPIdentify object. For example if you wanted to set a user&rsquo;s gender, and then increment their karma count by 1, you would do:</p>
+<p>To update user properties, first create an RakamIdentify object. For example if you wanted to set a user&rsquo;s gender, and then increment their karma count by 1, you would do:</p>
 
-<p>AMPIdentify *identify = [[[AMPIdentify identify] set:@&ldquo;gender&rdquo; value:@&ldquo;male&rdquo;] add:@&ldquo;karma&rdquo; value:[NSNumber numberWithInt:1]];</p>
+<p>RakamIdentify *identify = [[[RakamIdentify identify] set:@&ldquo;gender&rdquo; value:@&ldquo;male&rdquo;] add:@&ldquo;karma&rdquo; value:[NSNumber numberWithInt:1]];</p>
 
-<p>Then you would pass this AMPIdentify object to the identify function to send to the server:</p>
+<p>Then you would pass this RakamIdentify object to the identify function to send to the server:</p>
 
-<p>[[Amplitude instance] identify:identify outOfSession:YES];</p>
+<p>[[Rakam instance] identify:identify outOfSession:YES];</p>
 			</div>
 			
 
@@ -2082,7 +2082,7 @@
 				<h4 class="method-subtitle">See Also</h4>
 				<ul>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#user-properties-and-user-property-operations">User Properties and User Property Operations</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#user-properties-and-user-property-operations">User Properties and User Property Operations</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -2091,7 +2091,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -2151,7 +2151,7 @@
 				<h4 class="method-subtitle">See Also</h4>
 				<ul>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#setting-multiple-properties-with-setuserproperties">Setting Multiple Properties with setUserProperties</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#setting-multiple-properties-with-setuserproperties">Setting Multiple Properties with setUserProperties</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -2160,7 +2160,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -2227,7 +2227,7 @@
 				<h4 class="method-subtitle">See Also</h4>
 				<ul>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#setting-multiple-properties-with-setuserproperties">Setting Multiple Properties with setUserProperties</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#setting-multiple-properties-with-setuserproperties">Setting Multiple Properties with setUserProperties</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -2236,7 +2236,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -2284,7 +2284,7 @@
 				<h4 class="method-subtitle">See Also</h4>
 				<ul>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#clearing-user-properties-with-clearuserproperties">Clearing user properties</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#clearing-user-properties-with-clearuserproperties">Clearing user properties</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -2293,7 +2293,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -2362,7 +2362,7 @@
 				<h4 class="method-subtitle">See Also</h4>
 				<ul>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#setting-groups">Setting Groups</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#setting-groups">Setting Groups</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -2371,7 +2371,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -2437,7 +2437,7 @@
 				<h4 class="method-subtitle">See Also</h4>
 				<ul>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#setting-custom-user-ids">Setting Custom UserIds</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#setting-custom-user-ids">Setting Custom UserIds</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -2446,7 +2446,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -2506,7 +2506,7 @@
 				<h4 class="method-subtitle">See Also</h4>
 				<ul>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#custom-device-ids">Setting Custom Device Ids</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#custom-device-ids">Setting Custom Device Ids</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -2515,7 +2515,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -2583,7 +2583,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -2601,7 +2601,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Disables sending logged events to Amplitude servers.</p>
+				<p>Disables sending logged events to Rakam servers.</p>
 			</div>
 			
 		    
@@ -2616,7 +2616,7 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>offline</code></th>
-						<td><p>Whether logged events should be sent to Amplitude servers.</p></td>
+						<td><p>Whether logged events should be sent to Rakam servers.</p></td>
 					</tr>
 				
 				</table>
@@ -2630,9 +2630,9 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Disables sending logged events to Amplitude servers.</p>
+				<p>Disables sending logged events to Rakam servers.</p>
 
-<p>If you want to stop logged events from being sent to Amplitude severs, use this method to set the client to offline. Once offline is enabled, logged events will not be sent to the server until offline is disabled. Calling this method again with offline set to NO will allow events to be sent to server and the client will attempt to send events that have been queued while offline.</p>
+<p>If you want to stop logged events from being sent to Rakam severs, use this method to set the client to offline. Once offline is enabled, logged events will not be sent to the server until offline is disabled. Calling this method again with offline set to NO will allow events to be sent to server and the client will attempt to send events that have been queued while offline.</p>
 			</div>
 			
 
@@ -2643,7 +2643,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -2680,7 +2680,7 @@
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>Enables location tracking.</p>
 
-<p>If the user has granted your app location permissions, the SDK will also grab the location of the user. Amplitude will never prompt the user for location permissions itself, this must be done by your app.</p>
+<p>If the user has granted your app location permissions, the SDK will also grab the location of the user. Rakam will never prompt the user for location permissions itself, this must be done by your app.</p>
 
 <p><strong>Note:</strong> the user&rsquo;s location is only fetched once per session. Use <a href="#//api/name/updateLocation"><code>updateLocation</code></a> to force the SDK to fetch the user&rsquo;s latest location.</p>
 			</div>
@@ -2693,7 +2693,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -2739,7 +2739,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -2787,7 +2787,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -2837,7 +2837,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -2893,7 +2893,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -2944,7 +2944,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -2990,7 +2990,7 @@
 				<h4 class="method-subtitle">See Also</h4>
 				<ul>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#logging-out-and-anonymous-users">Logging Out Users</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#logging-out-and-anonymous-users">Logging Out Users</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -2999,7 +2999,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -3017,7 +3017,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Fetches the current <a href="#//api/name/sessionId">sessionId</a>, an identifier used by Amplitude to group together events tracked during the same session.</p>
+				<p>Fetches the current <a href="#//api/name/sessionId">sessionId</a>, an identifier used by Rakam to group together events tracked during the same session.</p>
 			</div>
 			
 		    
@@ -3039,7 +3039,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Fetches the current <a href="#//api/name/sessionId">sessionId</a>, an identifier used by Amplitude to group together events tracked during the same session.</p>
+				<p>Fetches the current <a href="#//api/name/sessionId">sessionId</a>, an identifier used by Rakam to group together events tracked during the same session.</p>
 			</div>
 			
 
@@ -3050,7 +3050,7 @@
 				<h4 class="method-subtitle">See Also</h4>
 				<ul>
 					
-					<li><code><p><a href="https://github.com/amplitude/Amplitude-iOS#tracking-sessions">Tracking Sessions</a></p></code></li>
+					<li><code><p><a href="https://github.com/amplitude/Rakam-iOS#tracking-sessions">Tracking Sessions</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -3059,7 +3059,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -3107,7 +3107,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.h</code></p>
+				<p><code class="declared-in-ref">Rakam.h</code></p>
 			</div>
 			
 			
@@ -3163,7 +3163,7 @@ If setUserId is NO, then attempt to load <a href="#//api/name/userId">userId</a>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.m</code></p>
+				<p><code class="declared-in-ref">Rakam.m</code></p>
 			</div>
 			
 			
@@ -3209,7 +3209,7 @@ If setUserId is NO, then attempt to load <a href="#//api/name/userId">userId</a>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.m</code></p>
+				<p><code class="declared-in-ref">Rakam.m</code></p>
 			</div>
 			
 			
@@ -3261,7 +3261,7 @@ Otherwise extends the session.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.m</code></p>
+				<p><code class="declared-in-ref">Rakam.m</code></p>
 			</div>
 			
 			
@@ -3307,7 +3307,7 @@ Otherwise extends the session.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.m</code></p>
+				<p><code class="declared-in-ref">Rakam.m</code></p>
 			</div>
 			
 			
@@ -3353,7 +3353,7 @@ Otherwise extends the session.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.m</code></p>
+				<p><code class="declared-in-ref">Rakam.m</code></p>
 			</div>
 			
 			
@@ -3403,7 +3403,7 @@ location in NSLibraryDirectory.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">Amplitude.m</code></p>
+				<p><code class="declared-in-ref">Rakam.m</code></p>
 			</div>
 			
 			
@@ -3424,7 +3424,7 @@ location in NSLibraryDirectory.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Amplitude. All rights reserved. Updated: 2016-12-05</p>
+						<p class="copyright">Copyright &copy; 2016 Rakam. All rights reserved. Updated: 2016-12-05</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>

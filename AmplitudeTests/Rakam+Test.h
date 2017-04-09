@@ -1,14 +1,14 @@
 //
-//  Amplitude+Test.h
-//  Amplitude
+//  Rakam+Test.h
+//  Rakam
 //
 //  Created by Allan on 3/11/15.
-//  Copyright (c) 2015 Amplitude. All rights reserved.
+//  Copyright (c) 2015 Rakam. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface Amplitude (Test)
+@interface Rakam (Test)
 
 @property (nonatomic, strong) NSOperationQueue *backgroundQueue;
 @property (nonatomic, strong) NSOperationQueue *initializerQueue;

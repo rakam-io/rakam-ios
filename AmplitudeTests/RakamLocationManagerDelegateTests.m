@@ -1,29 +1,29 @@
 //
-//  AMPLocationManagerDelegateTests.m
-//  AMPLocationManagerDelegateTests
+//  RakamLocationManagerDelegateTests.m
+//  RakamLocationManagerDelegateTests
 //
 //  Created by Curtis on 1/3/2015.
-//  Copyright (c) 2015 Amplitude. All rights reserved.
+//  Copyright (c) 2015 Rakam. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 #import <UIKit/UIKit.h>
-#import "AMPLocationManagerDelegate.h"
+#import "RakamLocationManagerDelegate.h"
 
 
-@interface AMPLocationManagerDelegateTests : XCTestCase
+@interface RakamLocationManagerDelegateTests : XCTestCase
 
 @end
 
-@implementation AMPLocationManagerDelegateTests
+@implementation RakamLocationManagerDelegateTests
 
-AMPLocationManagerDelegate *locationManagerDelegate;
+RakamLocationManagerDelegate *locationManagerDelegate;
 CLLocationManager *locationManager;
 
 - (void)setUp {
     [super setUp];
     locationManager = [[CLLocationManager alloc] init];
-    locationManagerDelegate = [[AMPLocationManagerDelegate alloc] init];
+    locationManagerDelegate = [[RakamLocationManagerDelegate alloc] init];
 }
 
 - (void)tearDown {

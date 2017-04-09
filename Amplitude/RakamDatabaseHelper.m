@@ -1,35 +1,35 @@
 //
-//  AMPDatabaseHelper.m
-//  Amplitude
+//  RakamDatabaseHelper.m
+//  Rakam
 //
 //  Created by Daniel Jih on 9/9/15.
-//  Copyright (c) 2015 Amplitude. All rights reserved.
+//  Copyright (c) 2015 Rakam. All rights reserved.
 //
 
-#ifndef AMPLITUDE_DEBUG
-#define AMPLITUDE_DEBUG 0
+#ifndef RAKAM_DEBUG
+#define RAKAM_DEBUG 0
 #endif
 
-#ifndef AMPLITUDE_LOG
-#if AMPLITUDE_DEBUG
-#   define AMPLITUDE_LOG(fmt, ...) NSLog(fmt, ##__VA_ARGS__)
+#ifndef RAKAM_LOG
+#if RAKAM_DEBUG
+#   define RAKAM_LOG(fmt, ...) NSLog(fmt, ##__VA_ARGS__)
 #else
-#   define AMPLITUDE_LOG(...)
+#   define RAKAM_LOG(...)
 #endif
 #endif
 
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
-#import "AMPARCMacros.h"
-#import "AMPDatabaseHelper.h"
-#import "AMPARCMacros.h"
-#import "AMPUtils.h"
-#import "AMPConstants.h"
+#import "RakamARCMacros.h"
+#import "RakamDatabaseHelper.h"
+#import "RakamARCMacros.h"
+#import "RakamUtils.h"
+#import "RakamConstants.h"
 
-@interface AMPDatabaseHelper()
+@interface RakamDatabaseHelper()
 @end
 
-@implementation AMPDatabaseHelper
+@implementation RakamDatabaseHelper
 {
     BOOL _databaseCreated;
     sqlite3 *_database;
@@ -70,12 +70,12 @@ static NSString *const DELETE_KEY = @"DELETE FROM %@ WHERE %@ = ?;";
 static NSString *const GET_VALUE = @"SELECT %@, %@ FROM %@ WHERE %@ = ?;";
 
 
-+ (AMPDatabaseHelper*)getDatabaseHelper
++ (RakamDatabaseHelper*)getDatabaseHelper
 {
-    return [AMPDatabaseHelper getDatabaseHelper:nil];
+    return [RakamDatabaseHelper getDatabaseHelper:nil];
 }
 
-+ (AMPDatabaseHelper*)getDatabaseHelper:(NSString*) instanceName
++ (RakamDatabaseHelper*)getDatabaseHelper:(NSString*) instanceName
 {
     static NSMutableDictionary *_instances = nil;
     static dispatch_once_t onceToken;
@@ -83,16 +83,16 @@ static NSString *const GET_VALUE = @"SELECT %@, %@ FROM %@ WHERE %@ = ?;";
         _instances = [[NSMutableDictionary alloc] init];
     });
 
-    if (instanceName == nil || [AMPUtils isEmptyString:instanceName]) {
-        instanceName = kAMPDefaultInstance;
+    if (instanceName == nil || [RakamUtils isEmptyString:instanceName]) {
+        instanceName = kRKMDefaultInstance;
     }
     instanceName = [instanceName lowercaseString];
 
-    AMPDatabaseHelper *dbHelper = nil;
+    RakamDatabaseHelper *dbHelper = nil;
     @synchronized(_instances) {
         dbHelper = [_instances objectForKey:instanceName];
         if (dbHelper == nil) {
-            dbHelper = [[AMPDatabaseHelper alloc] initWithInstanceName:instanceName];
+            dbHelper = [[RakamDatabaseHelper alloc] initWithInstanceName:instanceName];
             [_instances setObject:dbHelper forKey:instanceName];
             SAFE_ARC_RELEASE(dbHelper);
         }
@@ -107,15 +107,15 @@ static NSString *const GET_VALUE = @"SELECT %@, %@ FROM %@ WHERE %@ = ?;";
 
 - (id)initWithInstanceName:(NSString*) instanceName
 {
-    if ([AMPUtils isEmptyString:instanceName]) {
-        instanceName = kAMPDefaultInstance;
+    if ([RakamUtils isEmptyString:instanceName]) {
+        instanceName = kRKMDefaultInstance;
     }
     instanceName = [instanceName lowercaseString];
 
     if ((self = [super init])) {
-        NSString *databaseDirectory = [AMPUtils platformDataDirectory];
+        NSString *databaseDirectory = [RakamUtils platformDataDirectory];
         NSString *databasePath = [databaseDirectory stringByAppendingPathComponent:@"com.amplitude.database"];
-        if (![instanceName isEqualToString:kAMPDefaultInstance]) {
+        if (![instanceName isEqualToString:kRKMDefaultInstance]) {
             databasePath = [NSString stringWithFormat:@"%@_%@", databasePath, instanceName];
         }
         _databasePath = SAFE_ARC_RETAIN(databasePath);
@@ -146,9 +146,9 @@ static NSString *const GET_VALUE = @"SELECT %@, %@ FROM %@ WHERE %@ = ?;";
 - (BOOL)inDatabase:(void (^)(sqlite3 *db)) block
 {
     // check that the block doesn't isn't calling inDatabase itself, which would lead to a deadlock
-    AMPDatabaseHelper *currentSyncQueue = (__bridge id)dispatch_get_specific(kDispatchQueueKey);
+    RakamDatabaseHelper *currentSyncQueue = (__bridge id)dispatch_get_specific(kDispatchQueueKey);
     if (currentSyncQueue == self) {
-        AMPLITUDE_LOG(@"Should not call inDatabase in block passed to inDatabase");
+        RAKAM_LOG(@"Should not call inDatabase in block passed to inDatabase");
         return NO;
     }
 
@@ -176,9 +176,9 @@ static NSString *const GET_VALUE = @"SELECT %@, %@ FROM %@ WHERE %@ = ?;";
 - (BOOL)inDatabaseWithStatement:(NSString*) SQLString block:(void (^)(sqlite3_stmt *stmt)) block
 {
     // check that the block doesn't isn't calling inDatabase itself, which would lead to a deadlock
-    AMPDatabaseHelper *currentSyncQueue = (__bridge id)dispatch_get_specific(kDispatchQueueKey);
+    RakamDatabaseHelper *currentSyncQueue = (__bridge id)dispatch_get_specific(kDispatchQueueKey);
     if (currentSyncQueue == self) {
-        AMPLITUDE_LOG(@"Should not call inDatabase in block passed to inDatabase");
+        RAKAM_LOG(@"Should not call inDatabase in block passed to inDatabase");
         return NO;
     }
 
@@ -193,7 +193,7 @@ static NSString *const GET_VALUE = @"SELECT %@, %@ FROM %@ WHERE %@ = ?;";
 
         sqlite3_stmt *stmt;
         if (sqlite3_prepare_v2(_database, [SQLString UTF8String], -1, &stmt, NULL) != SQLITE_OK) {
-            AMPLITUDE_LOG(@"Failed to prepare statement for query %@", SQLString);
+            RAKAM_LOG(@"Failed to prepare statement for query %@", SQLString);
             sqlite3_close(_database);
             success = NO;
             return;
@@ -212,7 +212,7 @@ static NSString *const GET_VALUE = @"SELECT %@, %@ FROM %@ WHERE %@ = ?;";
 {
     char *errMsg;
     if (sqlite3_exec(db, [SQLString UTF8String], NULL, NULL, &errMsg) != SQLITE_OK) {
-        AMPLITUDE_LOG(@"Failed to exec sql string %@: %s", SQLString, errMsg);
+        RAKAM_LOG(@"Failed to exec sql string %@: %s", SQLString, errMsg);
         return NO;
     }
     return YES;
@@ -334,13 +334,13 @@ static NSString *const GET_VALUE = @"SELECT %@, %@ FROM %@ WHERE %@ = ?;";
 
     success &= [self inDatabaseWithStatement:insertSQL block:^(sqlite3_stmt *stmt) {
         if (sqlite3_bind_text(stmt, 1, [event UTF8String], -1, SQLITE_STATIC) != SQLITE_OK) {
-            AMPLITUDE_LOG(@"Failed to bind event text to insert statement for adding event to table %@", table);
+            RAKAM_LOG(@"Failed to bind event text to insert statement for adding event to table %@", table);
             success = NO;
             return;
         }
 
         if (sqlite3_step(stmt) != SQLITE_DONE) {
-            AMPLITUDE_LOG(@"Failed to execute prepared statement to add event to table %@", table);
+            RAKAM_LOG(@"Failed to execute prepared statement to add event to table %@", table);
             success = NO;
         }
     }];
@@ -382,12 +382,12 @@ static NSString *const GET_VALUE = @"SELECT %@, %@ FROM %@ WHERE %@ = ?;";
             // need to handle null events saved to database
             const char *rawEventString = (const char*)sqlite3_column_text(stmt, 1);
             if (rawEventString == NULL) {
-                AMPLITUDE_LOG(@"Ignoring NULL event string for event id %lld from table %@", eventId, table);
+                RAKAM_LOG(@"Ignoring NULL event string for event id %lld from table %@", eventId, table);
                 continue;
             }
             NSString *eventString = [NSString stringWithUTF8String:rawEventString];
-            if ([AMPUtils isEmptyString:eventString]) {
-                AMPLITUDE_LOG(@"Ignoring empty event string for event id %lld from table %@", eventId, table);
+            if ([RakamUtils isEmptyString:eventString]) {
+                RAKAM_LOG(@"Ignoring empty event string for event id %lld from table %@", eventId, table);
                 continue;
             }
 
@@ -395,7 +395,7 @@ static NSString *const GET_VALUE = @"SELECT %@, %@ FROM %@ WHERE %@ = ?;";
             NSError *error = nil;
             id eventImmutable = [NSJSONSerialization JSONObjectWithData:eventData options:0 error:&error];
             if (error != nil) {
-                AMPLITUDE_LOG(@"Error JSON deserialization of event id %lld from table %@: %@", eventId, table, error);
+                RAKAM_LOG(@"Error JSON deserialization of event id %lld from table %@: %@", eventId, table, error);
                 continue;
             }
 
@@ -435,12 +435,12 @@ static NSString *const GET_VALUE = @"SELECT %@, %@ FROM %@ WHERE %@ = ?;";
         }
 
         if (!success) {
-            AMPLITUDE_LOG(@"Failed to bind key %@ value %@ to statement", key, value);
+            RAKAM_LOG(@"Failed to bind key %@ value %@ to statement", key, value);
             return;
         }
 
         if (sqlite3_step(stmt) != SQLITE_DONE) {
-            AMPLITUDE_LOG(@"Failed to execute statement to insert key %@ value %@ to table %@", key, value, table);
+            RAKAM_LOG(@"Failed to execute statement to insert key %@ value %@ to table %@", key, value, table);
             success = NO;
         }
     }];
@@ -458,13 +458,13 @@ static NSString *const GET_VALUE = @"SELECT %@, %@ FROM %@ WHERE %@ = ?;";
 
     success &= [self inDatabaseWithStatement:deleteSQL block:^(sqlite3_stmt *stmt) {
         if (sqlite3_bind_text(stmt, 1, [key UTF8String], -1, SQLITE_STATIC) != SQLITE_OK) {
-            AMPLITUDE_LOG(@"Failed to bind key to statement to delete key %@ from table %@", key, table);
+            RAKAM_LOG(@"Failed to bind key to statement to delete key %@ from table %@", key, table);
             success = NO;
             return;
         }
 
         if (sqlite3_step(stmt) != SQLITE_DONE) {
-            AMPLITUDE_LOG(@"Failed to execute statement to delete key %@ from table %@", key, table);
+            RAKAM_LOG(@"Failed to execute statement to delete key %@ from table %@", key, table);
             success = NO;
         }
     }];
@@ -492,7 +492,7 @@ static NSString *const GET_VALUE = @"SELECT %@, %@ FROM %@ WHERE %@ = ?;";
 
     [self inDatabaseWithStatement:querySQL block:^(sqlite3_stmt *stmt) {
         if (sqlite3_bind_text(stmt, 1, [key UTF8String], -1, SQLITE_STATIC) != SQLITE_OK) {
-            AMPLITUDE_LOG(@"Failed to bind key %@ to stmt when getValueFromTable %@", key, table);
+            RAKAM_LOG(@"Failed to bind key %@ to stmt when getValueFromTable %@", key, table);
             return;
         }
 
@@ -506,7 +506,7 @@ static NSString *const GET_VALUE = @"SELECT %@, %@ FROM %@ WHERE %@ = ?;";
                 }
             }
         } else {
-            AMPLITUDE_LOG(@"Failed to get value for key %@ from table %@", key, table);
+            RAKAM_LOG(@"Failed to get value for key %@ from table %@", key, table);
         }
     }];
 
@@ -537,7 +537,7 @@ static NSString *const GET_VALUE = @"SELECT %@, %@ FROM %@ WHERE %@ = ?;";
         if (sqlite3_step(stmt) == SQLITE_ROW) {
             count = sqlite3_column_int(stmt, 0);
         } else {
-            AMPLITUDE_LOG(@"Failed to get event count from table %@", table);
+            RAKAM_LOG(@"Failed to get event count from table %@", table);
         }
     }];
 
@@ -607,7 +607,7 @@ static NSString *const GET_VALUE = @"SELECT %@, %@ FROM %@ WHERE %@ = ?;";
         if (sqlite3_step(stmt) == SQLITE_ROW) {
             eventId = sqlite3_column_int64(stmt, 0);
         } else {
-            AMPLITUDE_LOG(@"Failed to getNthEventIdFromTable");
+            RAKAM_LOG(@"Failed to getNthEventIdFromTable");
         }
     }];
 

@@ -1,39 +1,39 @@
 //
-//  AMPIdentify.h
-//  Amplitude
+//  RakamIdentify.h
+//  Rakam
 //
 //  Created by Daniel Jih on 10/5/15.
-//  Copyright © 2015 Amplitude. All rights reserved.
+//  Copyright © 2015 Rakam. All rights reserved.
 //
 
 /**
- `AMPIdentify` objects are a wrapper for user property operations, which get passed to the `identify` method to send to Amplitude servers.
+ `RKMIdentify` objects are a wrapper for user property operations, which get passed to the `identify` method to send to Amplitude servers.
 
  **Note:** if a user property is used in multiple operations on the same Identify object, only the first operation will be saved, and the rest will be ignored.
 
  Each method adds a user property operation to the Identify object, and returns the same Identify object, allowing you to chain multiple method calls together.
 
- Here is an example of how to use `AMPIdentify` to send user property operations:
+ Here is an example of how to use `RKMIdentify` to send user property operations:
 
-    AMPIdentify *identify = [[AMPIdentify identify] add:@"karma" value:[NSNumber numberWithInt:1]];
+    RKMIdentify *identify = [[RKMIdentify identify] add:@"karma" value:[NSNumber numberWithInt:1]];
     [[identify set:@"colors" value:@[@"rose", @"gold"]] append:@"ab-tests" value:@"campaign_a"];
     [[Amplitude instance] identify:identify];
 
  See [User Properties and User Property Operations](https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations)
  */
-@interface AMPIdentify : NSObject
+@interface RakamIdentify : NSObject
 
 @property (nonatomic, strong, readonly) NSMutableDictionary *userPropertyOperations;
 
 /**-----------------------------------------------------------------------------
- * @name Creating an AMPIdentify Object
+ * @name Creating an RKMIdentify Object
  * -----------------------------------------------------------------------------
  */
 
 /**
- Creates a nwe [AMPIdentify](#) object.
+ Creates a nwe [RKMIdentify](#) object.
 
- @returns a new [AMPIdentify](#) object.
+ @returns a new [RKMIdentify](#) object.
  */
 + (instancetype)identify;
 
@@ -51,11 +51,11 @@
 
  @param value The amount by which to increment the user property.
 
- @returns the same [AMPIdentify](#) object, allowing you to chain multiple method calls together.
+ @returns the same [RKMIdentify](#) object, allowing you to chain multiple method calls together.
 
  @see [User Properties and User Property Operations](https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations)
  */
-- (AMPIdentify*)add:(NSString*) property value:(NSObject*) value;
+- (RakamIdentify*)add:(NSString*) property value:(NSObject*) value;
 
 /**
  Append a value or values to a user property.
@@ -66,18 +66,18 @@
 
  @param value A value or values to append.
 
- @returns the same [AMPIdentify](#) object, allowing you to chain multiple method calls together.
+ @returns the same [RKMIdentify](#) object, allowing you to chain multiple method calls together.
 
  @see [User Properties and User Property Operations](https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations)
  */
-- (AMPIdentify*)append:(NSString*) property value:(NSObject*) value;
+- (RakamIdentify*)append:(NSString*) property value:(NSObject*) value;
 
 /*
  Internal method for clearing user properties.
 
  **Note:** $clearAll needs to be sent on its own Identify object. If there are already other operations, then don't add $clearAll. If $clearAll already in an Identify object, don't allow other operations to be added.
  */
-- (AMPIdentify*)clearAll;
+- (RakamIdentify*)clearAll;
 
 /**
  Prepend a value or values to a user property. Prepend means inserting the value or values at the front of a list.
@@ -88,11 +88,11 @@
 
  @param value A value or values to prepend.
 
- @returns the same [AMPIdentify](#) object, allowing you to chain multiple method calls together.
+ @returns the same [RKMIdentify](#) object, allowing you to chain multiple method calls together.
 
  @see [User Properties and User Property Operations](https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations)
  */
-- (AMPIdentify*)prepend:(NSString*) property value:(NSObject*) value;
+- (RakamIdentify*)prepend:(NSString*) property value:(NSObject*) value;
 
 /**
  Sets the value of a given user property. If the value already exists, it will be overwritten with the new value.
@@ -101,11 +101,11 @@
 
  @param value A value or values to set.
 
- @returns the same [AMPIdentify](#) object, allowing you to chain multiple method calls together.
+ @returns the same [RKMIdentify](#) object, allowing you to chain multiple method calls together.
 
  @see [User Properties and User Property Operations](https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations)
  */
-- (AMPIdentify*)set:(NSString*) property value:(NSObject*) value;
+- (RakamIdentify*)set:(NSString*) property value:(NSObject*) value;
 
 
 /**
@@ -117,11 +117,11 @@
 
  @param value A value or values to set once.
 
- @returns the same [AMPIdentify](#) object, allowing you to chain multiple method calls together.
+ @returns the same [RKMIdentify](#) object, allowing you to chain multiple method calls together.
 
  @see [User Properties and User Property Operations](https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations)
  */
-- (AMPIdentify*)setOnce:(NSString*) property value:(NSObject*) value;
+- (RakamIdentify*)setOnce:(NSString*) property value:(NSObject*) value;
 
 
 /**
@@ -129,10 +129,10 @@
 
  @param property The user property key to unset.
 
- @returns the same [AMPIdentify](#) object, allowing you to chain multiple method calls together.
+ @returns the same [RKMIdentify](#) object, allowing you to chain multiple method calls together.
 
  @see [User Properties and User Property Operations](https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations)
  */
-- (AMPIdentify*)unset:(NSString*) property;
+- (RakamIdentify*)unset:(NSString*) property;
 
 @end

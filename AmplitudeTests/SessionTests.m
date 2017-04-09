@@ -41,7 +41,7 @@
     // mock amplitude object and verify enterForeground not called
     id mockAmplitude = [OCMockObject partialMockForObject:self.amplitude];
     [[mockAmplitude reject] enterForeground];
-    [mockAmplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey];
+    [mockAmplitude initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] :apiKey];
     [mockAmplitude flushQueueWithQueue:[mockAmplitude initializerQueue]];
     [mockAmplitude flushQueue];
     [mockAmplitude verify];
@@ -55,7 +55,7 @@
 
     id mockAmplitude = [OCMockObject partialMockForObject:self.amplitude];
     [[mockAmplitude expect] enterForeground];
-    [mockAmplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey];
+    [mockAmplitude initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] :apiKey];
     [mockAmplitude flushQueueWithQueue:[mockAmplitude initializerQueue]];
     [mockAmplitude flushQueue];
     [mockAmplitude verify];
@@ -69,7 +69,7 @@
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:1000];
     [[[mockAmplitude expect] andReturnValue:OCMOCK_VALUE(date)] currentTime];
 
-    [mockAmplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey userId:nil];
+    [mockAmplitude initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] :apiKey userId:nil];
     [mockAmplitude flushQueueWithQueue:[mockAmplitude initializerQueue]];
     [mockAmplitude flushQueue];
     XCTAssertEqual([mockAmplitude queuedEventCount], 0);
@@ -139,7 +139,7 @@
 }
 
 - (void)testEnterBackgroundDoesNotTrackEvent {
-    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] : apiKey userId:nil];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] : apiKey userId:nil];
     [self.amplitude flushQueueWithQueue:self.amplitude.initializerQueue];
 
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
@@ -155,7 +155,7 @@
     [[[mockAmplitude expect] andReturnValue:OCMOCK_VALUE(date)] currentTime];
     [mockAmplitude setTrackingSessionEvents:YES];
 
-    [mockAmplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey userId:nil];
+    [mockAmplitude initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] :apiKey userId:nil];
     [mockAmplitude flushQueueWithQueue:[mockAmplitude initializerQueue]];
     [mockAmplitude flushQueue];
 
@@ -209,7 +209,7 @@
     [[[mockAmplitude expect] andReturnValue:OCMOCK_VALUE(date)] currentTime];
     [mockAmplitude setTrackingSessionEvents:YES];
 
-    [mockAmplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey userId:nil];
+    [mockAmplitude initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] :apiKey userId:nil];
     [mockAmplitude flushQueueWithQueue:[mockAmplitude initializerQueue]];
     [mockAmplitude flushQueue];
 
@@ -245,7 +245,7 @@
     [dbHelper insertOrReplaceKeyLongValue:@"previous_session_id" value:timestamp];
 
     self.amplitude.trackingSessionEvents = YES;
-    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] : apiKey userId:nil];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] : apiKey userId:nil];
 
     [self.amplitude flushQueue];
     XCTAssertEqual([dbHelper getEventCount], 2);

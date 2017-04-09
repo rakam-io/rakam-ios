@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		070D5B4D1E9AA9B60008BD5D /* libOCMock-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 070D5B4C1E9AA9B60008BD5D /* libOCMock-iOS.a */; };
 		343AB41A1CC99F4F00962943 /* AmplitudeFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 343AB4191CC99F4F00962943 /* AmplitudeFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		343AB41F1CC99FB500962943 /* RakamConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC708591AD4B28300949778 /* RakamConstants.m */; };
 		343AB4201CC99FB800962943 /* RakamDatabaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 60BA92721C2376680043178E /* RakamDatabaseHelper.m */; };
@@ -91,6 +92,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		070D5B4C1E9AA9B60008BD5D /* libOCMock-iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libOCMock-iOS.a"; path = "../../Library/Developer/Xcode/DerivedData/Amplitude-aqgzguyndsoipogqtsimjpnpjgyx/Build/Products/Debug-iphonesimulator/OCMock-iOS/libOCMock-iOS.a"; sourceTree = "<group>"; };
 		343AB4171CC99F4F00962943 /* Amplitude.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Amplitude.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		343AB4191CC99F4F00962943 /* AmplitudeFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AmplitudeFramework.h; sourceTree = "<group>"; };
 		343AB41B1CC99F4F00962943 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				070D5B4D1E9AA9B60008BD5D /* libOCMock-iOS.a in Frameworks */,
 				DA6B3BB40A3C99F08C34EDFD /* libPods-AmplitudeTVOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,6 +202,7 @@
 		9D55C176B7CB02D142328C19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				070D5B4C1E9AA9B60008BD5D /* libOCMock-iOS.a */,
 				C1E203B94A494052A38E53DF /* libPods-AmplitudeTVOSTests.a */,
 				DB9AFF397E54853B1A74287D /* libPods-AmplitudeTests.a */,
 			);

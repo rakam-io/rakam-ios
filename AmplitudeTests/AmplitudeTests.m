@@ -38,7 +38,7 @@
     [super setUp];
     _connectionMock = [OCMockObject mockForClass:NSURLConnection.class];
     _connectionCallCount = 0;
-    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] : apiKey];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] : apiKey];
 }
 
 - (void)tearDown {
@@ -129,7 +129,7 @@
     XCTAssertNil([newDBHelper2 getLongValue:@"sequence_number"]);
 
     // init first new app and verify separate database
-    [[Rakam instanceWithName:newInstance1] initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] : newApiKey1];
+    [[Rakam instanceWithName:newInstance1] initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] : newApiKey1];
     [[Rakam instanceWithName:newInstance1] flushQueue];
     XCTAssertNotEqualObjects([[Rakam instanceWithName:newInstance1] getDeviceId], @"oldDeviceId");
     XCTAssertEqualObjects([[Rakam instanceWithName:newInstance1] getDeviceId], [newDBHelper1 getValue:@"device_id"]);
@@ -138,7 +138,7 @@
     XCTAssertEqual([newDBHelper1 getIdentifyCount], 0);
 
     // init second new app and verify separate database
-    [[Rakam instanceWithName:newInstance2] initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] : newApiKey2];
+    [[Rakam instanceWithName:newInstance2] initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] : newApiKey2];
     [[Rakam instanceWithName:newInstance2] flushQueue];
     XCTAssertNotEqualObjects([[Rakam instanceWithName:newInstance2] getDeviceId], @"oldDeviceId");
     XCTAssertEqualObjects([[Rakam instanceWithName:newInstance2] getDeviceId], [newDBHelper2 getValue:@"device_id"]);
@@ -187,7 +187,7 @@
     NSString *testUserId = @"testUserId";
     RakamDatabaseHelper *dbHelper = [RakamDatabaseHelper getDatabaseHelper:instanceName];
     [dbHelper insertOrReplaceKeyValue:@"_user" value:testUserId];
-    [client initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] : apiKey];
+    [client initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] : apiKey];
     [client flushQueue];
     XCTAssertTrue([[client userId] isEqualToString:testUserId]);
 }
@@ -197,7 +197,7 @@
     XCTAssertEqual([self.amplitude userId], nil);
 
     NSString *nilUserId = nil;
-    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] : apiKey userId:nilUserId];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] : apiKey userId:nilUserId];
     [self.amplitude flushQueue];
     XCTAssertEqual([self.amplitude userId], nilUserId);
     XCTAssertNil([[RakamDatabaseHelper getDatabaseHelper] getValue:@"_user"]);
@@ -210,7 +210,7 @@
     XCTAssertEqual([client userId], nil);
 
     NSString *testUserId = @"testUserId";
-    [client initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] : apiKey userId:testUserId];
+    [client initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] : apiKey userId:testUserId];
     [client flushQueue];
     XCTAssertEqual([client userId], testUserId);
 }
@@ -220,7 +220,7 @@
     XCTAssertEqual([self.amplitude userId], nil);
 
     NSString *testUserId = @"testUserId";
-    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] : apiKey userId:testUserId];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] : apiKey userId:testUserId];
     [self.amplitude flushQueue];
     XCTAssertEqual([self.amplitude userId], nil);
 }

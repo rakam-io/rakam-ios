@@ -30,12 +30,12 @@
 }
 
 - (void)testApiKeySet {
-    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] :apiKey];
     XCTAssertEqual(self.amplitude.apiKey, apiKey);
 }
 
 - (void)testDeviceIdSet {
-    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] :apiKey];
     [self.amplitude flushQueue];
     XCTAssertNotNil([self.amplitude deviceId]);
     XCTAssertEqual([self.amplitude deviceId].length, 36);
@@ -43,24 +43,24 @@
 }
 
 - (void)testUserIdNotSet {
-    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] :apiKey];
     [self.amplitude flushQueue];
     XCTAssertNil([self.amplitude userId]);
 }
 
 - (void)testUserIdSet {
-    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey userId:userId];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] :apiKey userId:userId];
     [self.amplitude flushQueue];
     XCTAssertEqualObjects([self.amplitude userId], userId);
 }
 
 - (void)testInitializedSet {
-    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] :apiKey];
     XCTAssert([self.amplitude initialized]);
 }
 
 - (void)testOptOut {
-    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] :apiKey];
 
     [self.amplitude setOptOut:YES];
     [self.amplitude logEvent:@"Opted Out"];
@@ -78,7 +78,7 @@
 }
 
 - (void)testUserPropertiesSet {
-    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] :apiKey];
     RakamDatabaseHelper *dbHelper = [RakamDatabaseHelper getDatabaseHelper];
     XCTAssertEqual([dbHelper getEventCount], 0);
 
@@ -114,7 +114,7 @@
 - (void)testSetDeviceId {
     RakamDatabaseHelper *dbHelper = [RakamDatabaseHelper getDatabaseHelper];
 
-    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] :apiKey];
     [self.amplitude flushQueue];
     NSString *generatedDeviceId = [self.amplitude getDeviceId];
     XCTAssertNotNil(generatedDeviceId);

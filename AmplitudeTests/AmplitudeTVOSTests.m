@@ -39,7 +39,7 @@
     [super setUp];
     _connectionMock = [OCMockObject mockForClass:NSURLConnection.class];
     _connectionCallCount = 0;
-    [self.amplitude initializeApiKey:[NSURL URLWithString:@"https://app.rakam.io"] :apiKey];
+    [self.amplitude initializeApiKey:[NSURL URLWithString:@"http://127.0.0.1:9998"] :apiKey];
 }
 
 - (void)tearDown {

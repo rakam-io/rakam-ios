@@ -687,7 +687,7 @@
     XCTAssertTrue([self.amplitude archive:event toFile:archiveName]);
 
     NSDictionary *unarchived = [self.amplitude unarchive:archiveName];
-    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_8_4) {
+    if (floor(NSFoundationVersionNumber) > 1144.17) {
         XCTAssertEqualObjects(unarchived, event);
     } else {
         XCTAssertNil(unarchived);

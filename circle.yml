@@ -1,4 +1,6 @@
 machine:
+  xcode:
+    version: 7.3
   environment:
     # CocoaPods versions greater than 0.34 require
     # your terminal to be using UTF-8 encoding.

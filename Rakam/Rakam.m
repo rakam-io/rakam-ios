@@ -57,7 +57,6 @@
 @property(nonatomic, assign) BOOL backoffUpload;
 @property(nonatomic, assign) int backoffUploadBatchSize;
 
-- (void)initializeApiKey:(NSURL *)apiUrl : (NSString *) apiKey;
 @end
 
 NSString *const kRKMSessionStartEvent = @"session_start";

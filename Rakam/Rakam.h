@@ -345,8 +345,6 @@
 - (void)setUserProperties:(NSDictionary *)userProperties;
 
 /**
-
-/**
  Clears all properties that are tracked on the user level.
 
  **Note: the result is irreversible!**

@@ -2,11 +2,11 @@
 
 ### 3.14.0 (February 2, 2017)
 
-* Add support for enabling SSL-pinning via Cocoapods. Thanks to @aaronwasserman for the PR. See [Readme](https://github.com/amplitude/amplitude-ios#ssl-pinning) for more information.
+* Add support for enabling SSL-pinning via Cocoapods. Thanks to @aaronwasserman for the PR. See [Readme](https://github.com/rakam/rakam-ios#ssl-pinning) for more information.
 
 ### 3.13.0 (January 30, 2017)
 
-* Add support for tvOS. Thanks to @gabek for the original PR. See [Readme](https://github.com/amplitude/Rakam-iOS#tvos) for more information.
+* Add support for tvOS. Thanks to @gabek for the original PR. See [Readme](https://github.com/rakam/Rakam-iOS#tvos) for more information.
 * Bump iOS minimum deployment target to 6.0.
 * Update device list. Thanks to @subbotkin for the PR.
 
@@ -17,15 +17,15 @@
 
 ### 3.12.0 (December 5, 2016)
 
-* Add helper method to regenerate a new random deviceId. This can be used in conjunction with `setUserId:nil` to anonymize a user after they log out. Note this is not recommended unless you know what you are doing. See [Readme](https://github.com/amplitude/Rakam-iOS#logging-out-and-anonymous-users) for more information.
+* Add helper method to regenerate a new random deviceId. This can be used in conjunction with `setUserId:nil` to anonymize a user after they log out. Note this is not recommended unless you know what you are doing. See [Readme](https://github.com/rakam/Rakam-iOS#logging-out-and-anonymous-users) for more information.
 
 ### 3.11.1 (November 7, 2016)
 
-* Allow `logEvent` with a custom long long timestamp (milliseconds since epoch). See [iOS documentation](https://rawgit.com/amplitude/Rakam-iOS/v3.11.1/documentation/html/Classes/Rakam.html#//api/name/logEvent:withEventProperties:withGroups:withLongLongTimestamp:outOfSession:) for more details.
+* Allow `logEvent` with a custom long long timestamp (milliseconds since epoch). See [iOS documentation](https://rawgit.com/rakam/Rakam-iOS/v3.11.1/documentation/html/Classes/Rakam.html#//api/name/logEvent:withEventProperties:withGroups:withLongLongTimestamp:outOfSession:) for more details.
 
 ### 3.11.0 (November 7, 2016)
 
-* Allow `logEvent` with a custom timestamp (milliseconds since epoch). If the timestamp value is `nil`, then the event is timestamped with the current time. If setting a custom timestamp, you should use `[NSNumber numberWithLongLong:milliseconds]`. See [iOS documentation](https://rawgit.com/amplitude/Rakam-iOS/master/documentation/html/Classes/Rakam.html#//api/name/logEvent:withEventProperties:withGroups:withTimestamp:outOfSession:) for more details.
+* Allow `logEvent` with a custom timestamp (milliseconds since epoch). If the timestamp value is `nil`, then the event is timestamped with the current time. If setting a custom timestamp, you should use `[NSNumber numberWithLongLong:milliseconds]`. See [iOS documentation](https://rawgit.com/rakam/Rakam-iOS/master/documentation/html/Classes/Rakam.html#//api/name/logEvent:withEventProperties:withGroups:withTimestamp:outOfSession:) for more details.
 
 ### 3.10.1 (October 31, 2016)
 
@@ -33,7 +33,7 @@
 
 ### 3.10.0 (October 26, 2016)
 
-* Add ability to log identify events outOfSession, this is useful for updating user properties without triggering session-handling logic. See [Readme](https://github.com/amplitude/Rakam-iOS#tracking-sessions) for more information.
+* Add ability to log identify events outOfSession, this is useful for updating user properties without triggering session-handling logic. See [Readme](https://github.com/rakam/Rakam-iOS#tracking-sessions) for more information.
 
 ### 3.9.0 (October 7, 2016)
 
@@ -65,27 +65,27 @@
 
 ## 3.8.0 (June 13, 2016)
 
-* Add support for iOS Extensions. See the [Readme](https://github.com/amplitude/amplitude-ios#ios-extensions) for instructions, or check out our [iOS-Extension-Demo](https://github.com/amplitude/iOS-Extension-Demo). Credit to @andyyc for the original PR.
+* Add support for iOS Extensions. See the [Readme](https://github.com/rakam/rakam-ios#ios-extensions) for instructions, or check out our [iOS-Extension-Demo](https://github.com/rakam/iOS-Extension-Demo). Credit to @andyyc for the original PR.
 * Fix bug where subsequent calls to `initializeApiKey` after the first were not being ignored.
 * Guard debug log statements with a debug flag (disabled by default). To enable debug logging, change `RAKAM_DEBUG` from `0` to `1` at the top of the Objective-C file you wish to examine.
 
 ## 3.7.1 (June 10, 2016)
 
-* Add documentation for SDK functions. You can take a look [here](https://rawgit.com/amplitude/Rakam-iOS/master/documentation/html/index.html). A link has also been added to the Readme.
+* Add documentation for SDK functions. You can take a look [here](https://rawgit.com/rakam/Rakam-iOS/master/documentation/html/index.html). A link has also been added to the Readme.
 * Updated device mapping with iPhone SE, iPad Mini 4, and iPad Pro.
 * Fix crash during upgradePrefs in the init method. This bug affected app users who were upgrading from an old version of an app using Rakam iOS v2.1.1 or earlier straight to a version of the app using Rakam iOS v3.6.0 or later.
 
 ## 3.7.0 (April 20, 2016)
 
 * Add helper method `getSessionId` to expose the current sessionId value.
-* Add support for setting groups for users and events. See [Readme](https://github.com/amplitude/Rakam-iOS#setting-groups) for more information.
-* Add logRevenueV2 and new Revenue class to support logging revenue events with properties, and revenue type. See [Readme](https://github.com/amplitude/Rakam-iOS#tracking-revenue) for more info.
+* Add support for setting groups for users and events. See [Readme](https://github.com/rakam/Rakam-iOS#setting-groups) for more information.
+* Add logRevenueV2 and new Revenue class to support logging revenue events with properties, and revenue type. See [Readme](https://github.com/rakam/Rakam-iOS#tracking-revenue) for more info.
 
 ## 3.6.0 (March 28, 2016)
 
 * Add support for prepend user property operation.
 * Fix support for 32-bit devices. Switch to using sqlite3.0, and cast return values from sqlite3.
-* Add support for logging events to multiple Rakam apps. See [Readme](https://github.com/amplitude/Rakam-iOS#tracking-events-to-multiple-amplitude-apps) for details.
+* Add support for logging events to multiple Rakam apps. See [Readme](https://github.com/rakam/Rakam-iOS#tracking-events-to-multiple-rakam-apps) for details.
 
 ## 3.5.0 (January 15, 2016)
 

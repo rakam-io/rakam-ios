@@ -1,0 +1,6 @@
+framework module Rakam {
+    umbrella header "RakamFramework.h"
+
+    export *
+    module * { export * }
+}

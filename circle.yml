@@ -24,6 +24,6 @@ test:
       PROVISIONING_PROFILE=
       -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
       -sdk iphonesimulator
-      -workspace Amplitude.xcworkspace
-      -scheme "AmplitudeTests"
+      -workspace Rakam.xcworkspace
+      -scheme "RakamTests"
       build build-tests run-tests

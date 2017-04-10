@@ -2,13 +2,13 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '6.0'
 
-project 'Amplitude'
+project 'Rakam'
 
-target 'AmplitudeTests' do
+target 'RakamTests' do
     pod 'OCMock', '~> 3.2.1'
 end
 
-target 'AmplitudeTVOSTests' do
+target 'RakamTVOSTests' do
     platform :tvos, '9.0'
     pod 'OCMock', '~> 3.2.1'
 end

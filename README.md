@@ -1,8 +1,8 @@
 Rakam iOS SDK
 ====================
-An iOS SDK for tracking events and revenue to [Rakam](http://www.amplitude.com).
+An iOS SDK for tracking events and revenue to [Rakam](http://www.rakam.com).
 
-[![Circle CI](https://circleci.com/gh/rakam-io/rakam-ios.svg?style=shield&circle-token=e1b2a7d2cd6dd64ac3643bc8cb2117c0ed5cbb75)](https://circleci.com/gh/amplitude/Rakam-iOS/tree/master)
+[![Circle CI](https://circleci.com/gh/rakam-io/rakam-ios.svg?style=shield&circle-token=e1b2a7d2cd6dd64ac3643bc8cb2117c0ed5cbb75)](https://circleci.com/gh/rakam/Rakam-iOS/tree/master)
 [![CocoaPods](https://img.shields.io/cocoapods/v/rakam-ios.svg?style=flat)](http://cocoadocs.org/docsets/Rakam-iOS/)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
@@ -10,18 +10,18 @@ A [demo application](https://github.com/rakam-io/iOS-Demo) is available to show 
 
 A [demo application](https://github.com/rakam-io/iOS-Extension-Demo) is available to show a simple integration in iOS extensions.
 
-See our [SDK documentation](https://rawgit.com/rakam-io/rakam-ios/v3.14.0/documentation/html/index.html) for a description of all available SDK methods and classes.
+See our [SDK documentation](https://rawgit.com/rakam-io/rakam-ios/v4.0.0/documentation/html/index.html) for a description of all available SDK methods and classes.
 
 Our iOS SDK also supports tvOS. See [below](https://github.com/rakam-io/Rakam-ios#tvos) for more information.
 
 # Setup #
-1. If you haven't already, go to https://amplitude.com and register for an account. You will receive an API Key.
+1. If you haven't already, go to https://rakam.com and register for an account. You will receive an API Key.
 
-2. [Download the source code](https://github.com/amplitude/Rakam-iOS/archive/master.zip) and extract the zip file.
+2. [Download the source code](https://github.com/rakam/Rakam-iOS/archive/master.zip) and extract the zip file.
 
-    Alternatively, you can pull directly from GitHub. If you use CocoaPods, add the following line to your Podfile: `pod 'Rakam-iOS', '~> 3.14.0'`. If you are using CocoaPods, you may skip steps 3 and 4.
+    Alternatively, you can pull directly from GitHub. If you use CocoaPods, add the following line to your Podfile: `pod 'Rakam-iOS', '~> 4.0.0'`. If you are using CocoaPods, you may skip steps 3 and 4.
 
-    You also have the option to install using Carthage. If you are using Carthage, add the following line to your Cartfile: `github "amplitude/Rakam-iOS"`. Just add `#import <Rakam/Rakam.h>` to import all of the Rakam header files.
+    You also have the option to install using Carthage. If you are using Carthage, add the following line to your Cartfile: `github "rakam/Rakam-iOS"`. Just add `#import <Rakam/Rakam.h>` to import all of the Rakam header files.
 
 3. Copy the `Rakam` sub-folder into the source of your project in Xcode. Check "Copy items into destination group's folder (if needed)".
 
@@ -49,8 +49,8 @@ Our iOS SDK also supports tvOS. See [below](https://github.com/rakam-io/Rakam-io
 It's important to think about what types of events you care about as a developer. You should aim to track between 20 and 200 types of events on your site. Common event types are actions the user initiates (such as pressing a button) and events you want the user to complete (such as filling out a form, completing a level, or making a payment).
 
 Here are some resources to help you with your instrumentation planning:
-  * [Event Tracking Quick Start Guide](https://amplitude.zendesk.com/hc/en-us/articles/207108137).
-  * [Event Taxonomy and Best Practices](https://amplitude.zendesk.com/hc/en-us/articles/211988918).
+  * [Event Tracking Quick Start Guide](https://rakam.zendesk.com/hc/en-us/articles/207108137).
+  * [Event Taxonomy and Best Practices](https://rakam.zendesk.com/hc/en-us/articles/211988918).
 
 Having large amounts of distinct event types, event properties and user properties, however, can make visualizing and searching of the data very confusing. By default we only show the first:
   * 1000 distinct event types
@@ -59,7 +59,7 @@ Having large amounts of distinct event types, event properties and user properti
 
 Anything past the above thresholds will not be visualized. **Note that the raw data is not impacted by this in any way, meaning you can still see the values in the raw data, but they will not be visualized on the platform.**
 
-A single call to `logEvent` should not have more than 1000 event properties. Likewise a single call to `setUserProperties` should not have more than 1000 user properties. If the 1000 item limit is exceeded then the properties will be dropped and a warning will be logged. We have put in very conservative estimates for the event and property caps which we don’t expect to be exceeded in any practical use case. If you feel that your use case will go above those limits please reach out to support@amplitude.com.
+A single call to `logEvent` should not have more than 1000 event properties. Likewise a single call to `setUserProperties` should not have more than 1000 user properties. If the 1000 item limit is exceeded then the properties will be dropped and a warning will be logged. We have put in very conservative estimates for the event and property caps which we don’t expect to be exceeded in any practical use case. If you feel that your use case will go above those limits please reach out to support@rakam.com.
 
 # Tracking Sessions #
 
@@ -333,7 +333,7 @@ NSString *deviceId = [[Rakam instance] getDeviceId]; // existing deviceId
 
 # tvOS #
 
-This SDK will work with tvOS apps. Follow the same [setup instructions](https://github.com/amplitude/Rakam-iOS#setup) for iOS apps.
+This SDK will work with tvOS apps. Follow the same [setup instructions](https://github.com/rakam/Rakam-iOS#setup) for iOS apps.
 
 One thing to note: tvOS apps do not have persistent storage (only temporary storage), so for tvOS the SDK is configured to upload events immediately as they are logged (`eventUploadThreshold` is set to 1 by default for tvOS). It is assumed that Apple TV devices have a stable internet connection, so uploading events immediately is reasonable. If you wish to revert back to the iOS batching behavior, you can do so by changing `eventUploadThreshold` (set to 30 by default for iOS):
 ``` objective-c
@@ -351,7 +351,7 @@ This SDK will work with Swift. If you are copying the source files or using Coco
 If you have `use_frameworks!` set, you should not use a bridging header and instead use the following line in your swift files:
 
 ``` swift
-import Amplitude_iOS
+import Rakam_iOS
 ```
 
 In either case, you can call Rakam methods with `Rakam.instance().method(...)`
@@ -391,7 +391,7 @@ end
 If you installed the SDK directly from the source, you can enable SSL pinning by adding the following preprocessor macro: `RAKAM_SSL_PINNING=1`
 
 ### iOS Extensions ###
-The SDK allows for tracking in iOS Extensions. Follow the [Setup instructions](https://github.com/amplitude/amplitude-ios#setup). In Step 6, instead of initializing the SDK in `application:didFinishLaunchingWithOptions:`, you initialize the SDK in your extension's `viewDidLoad` method.
+The SDK allows for tracking in iOS Extensions. Follow the [Setup instructions](https://github.com/rakam/rakam-ios#setup). In Step 6, instead of initializing the SDK in `application:didFinishLaunchingWithOptions:`, you initialize the SDK in your extension's `viewDidLoad` method.
 
 Couple of things to note:
 
@@ -401,7 +401,7 @@ Couple of things to note:
 
 3. Also, you may want to decrease `eventUploadPeriodSeconds` to something shorter than 30 seconds to upload events at shorter intervals if you don't expect users to keep your extension open that long. You can also manually call `[[Rakam instance] uploadEvents];` to manually force an upload.
 
-Here is a simple [demo application](https://github.com/amplitude/iOS-Extension-Demo) showing how to instrument the iOS SDK in an extension.
+Here is a simple [demo application](https://github.com/rakam/iOS-Extension-Demo) showing how to instrument the iOS SDK in an extension.
 
 ### Debug Logging ###
 By default only critical errors are logged to console. To enable debug logging, change `RAKAM_DEBUG` from `0` to `1` at the top of the Objective-C file you wish to examine.

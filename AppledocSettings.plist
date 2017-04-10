@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>--project-name</key>
-	<string>Amplitude-iOS</string>
+	<string>rakam-ios</string>
 	<key>--project-company</key>
-	<string>Amplitude</string>
+	<string>Rakam</string>
 	<key>--company-id</key>
-	<string>com.amplitude</string>
+	<string>io.rakam</string>
 	<key>--templates</key>
 	<string>appledoc-templates</string>
 	<key>--output</key>
@@ -21,13 +21,12 @@
 		<string>Pods</string>
 		<string>documentation</string>
 		<string>build</string>
-		<string>AmplitudeTests</string>
-		<string>AmplitudeFramework</string>
+		<string>RakamTests</string>
+		<string>RakamFramework</string>
 		<string>appledoc-templates</string>
 		<string>*.framework</string>
 		<string>RKMDatabaseHelper.m</string>
 		<string>RakamURLConnection.m</string>
-		<string>SSLCertificatePinning</string>
 	</array>
 </dict>
 </plist>

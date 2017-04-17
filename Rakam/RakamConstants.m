@@ -4,7 +4,7 @@
 #import "RakamConstants.h"
 
 NSString *const kRKMLibrary = @"rakam-ios";
-NSString *const kRKMVersion = @"4.0.0";
+NSString *const kRKMVersion = @"4.0.1";
 NSString *const kRKMDefaultInstance = @"$default_instance";
 const int kRKMApiVersion = 3;
 const int kRKMDBVersion = 3;
@@ -30,7 +30,7 @@ const long kRKMMinTimeBetweenSessionsMillis = 5 * 60 * 1000; // 5m
 const int kRKMMaxStringLength = 1024;
 const int kRKMMaxPropertyKeys = 1000;
 
-NSString *const IDENTIFY_EVENT = @"$identify";
+NSString *const IDENTIFY_EVENT = @"$$user";
 NSString *const RKM_OP_ADD = @"$add";
 NSString *const RKM_OP_APPEND = @"$append";
 NSString *const RKM_OP_CLEAR_ALL = @"$clearAll";

@@ -192,13 +192,6 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
     instanceName = [instanceName lowercaseString];
 
     if ((self = [super init])) {
-
-#if RAKAM_SSL_PINNING
-        _sslPinningEnabled = YES;
-#else
-        _sslPinningEnabled = NO;
-#endif
-
         _initialized = NO;
         _locationListeningEnabled = YES;
         _sessionId = -1;
@@ -447,7 +440,11 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
         SAFE_ARC_RELEASE(_apiKey);
         SAFE_ARC_RELEASE(_apiUrl);
         _apiKey = apiKey;
-        _apiUrl = [NSString stringWithFormat:@"%@://%@/%@", apiUrl.scheme, apiUrl.host, @"event/batch"];
+
+        NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@://%@:%@/%@",
+                                                                              apiUrl.scheme, apiUrl.host, apiUrl.port, @"event/batch"]];
+        _apiUrl = url.absoluteString;
+        SAFE_ARC_RELEASE(url);
 
         [self runOnBackgroundQueue:^{
             if (setUserId) {
@@ -569,7 +566,7 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
         [event setValue:realEventProperties forKey:@"properties"];
         [realEventProperties setValue:timestamp forKey:@"_time"];
 
-        if ([eventType isEqualToString:@"$identify"]) {
+        if ([eventType isEqualToString:IDENTIFY_EVENT]) {
             [realEventProperties addEntriesFromDictionary:[self truncate:
                     [RakamUtils makeJSONSerializable:[self replaceWithEmptyJSON:userProperties]]]];
         } else {
@@ -876,12 +873,12 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
 
     // Add checksum
     [postData appendData:[@"\", \"checksum\": \"" dataUsingEncoding:NSUTF8StringEncoding]];
-    NSString *checksumData = [NSString stringWithFormat:@"%@%@%@%@", apiVersionString, _apiKey, events, timestampString];
+    NSString *checksumData = [NSString stringWithFormat:@"%@%@%@%@", _apiKey, apiVersionString, timestampString, events];
     NSString *checksum = [self md5HexDigest:checksumData];
     [postData appendData:[checksum dataUsingEncoding:NSUTF8StringEncoding]];
 
     [postData appendData:[@"\"}, \"events\": " dataUsingEncoding:NSUTF8StringEncoding]];
-    [postData appendData:[[self urlEncodeString:events] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postData appendData:[events dataUsingEncoding:NSUTF8StringEncoding]];
     [postData appendData:[@"}" dataUsingEncoding:NSUTF8StringEncoding]];
 
     [request setHTTPMethod:@"POST"];
@@ -893,19 +890,14 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
 
     SAFE_ARC_RELEASE(postData);
 
-    // If pinning is enabled, use the RakamURLConnection that handles it.
-#if RAKAM_SSL_PINNING
-    id Connection = (self.sslPinningEnabled ? [RakamURLConnection class] : [NSURLConnection class]);
-#else
     id Connection = [NSURLConnection class];
-#endif
     [Connection sendAsynchronousRequest:request queue:_backgroundQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         BOOL uploadSuccessful = NO;
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
         if (response != nil) {
             if ([httpResponse statusCode] == 200) {
                 NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                if ([result isEqualToString:@"success"]) {
+                if ([result isEqualToString:@"1"]) {
                     // success, remove existing events from dictionary
                     uploadSuccessful = YES;
                     if (maxEventId >= 0) {
@@ -914,12 +906,10 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
                     if (maxIdentifyId >= 0) {
                         (void) [self.dbHelper removeIdentifys:maxIdentifyId];
                     }
-                } else if ([result isEqualToString:@"invalid_api_key"]) {
+                } else if ([httpResponse statusCode] == 403) {
                     RAKAM_ERROR(@"ERROR: Invalid API Key, make sure your API key is correct in initializeApiKey:");
-                } else if ([result isEqualToString:@"bad_checksum"]) {
+                } else if ([result isEqualToString:@"{\"error\":\"Checksum is invalid\",\"error_code\":400}"]) {
                     RAKAM_ERROR(@"ERROR: Bad checksum, post request was mangled in transit, will attempt to reupload later");
-                } else if ([result isEqualToString:@"request_db_write_failed"]) {
-                    RAKAM_ERROR(@"ERROR: Couldn't write to request database on server, will attempt to reupload later");
                 } else {
                     RAKAM_ERROR(@"ERROR: %@, will attempt to reupload later", result);
                 }
@@ -1402,12 +1392,12 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
 - (NSString *)urlEncodeString:(NSString *)string {
     NSString *newString;
 #if __has_feature(objc_arc)
-    newString = (__bridge_transfer NSString*)
-    CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                            (__bridge CFStringRef)string,
-                                            NULL,
-                                            CFSTR(":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`"),
-                                            CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
+    newString = (__bridge_transfer NSString *)
+            CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                    (__bridge CFStringRef) string,
+                    NULL,
+                    CFSTR(":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`"),
+                    CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
 #else
     newString = NSMakeCollectable(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
             (CFStringRef) string,

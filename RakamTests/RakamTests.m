@@ -425,12 +425,12 @@
     XCTAssertEqualObjects([mergedEvents[3] objectForKey:@"collection"], @"test_event4");
     XCTAssertEqual([[mergedEvents[3] objectForKey:@"event_id"] intValue], 4);
 
-    XCTAssertEqualObjects([mergedEvents[4] objectForKey:@"collection"], @"$identify");
+    XCTAssertEqualObjects([mergedEvents[4] objectForKey:@"collection"], @"$$user");
     XCTAssertEqual([[mergedEvents[4] objectForKey:@"event_id"] intValue], 1);
     XCTAssertTrue([self key:[mergedEvents[4] objectForKey:@"properties"]
        containsInDictionary:[NSDictionary dictionaryWithObject:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:1] forKey:@"photoCount"] forKey:@"$add"]]);
 
-    XCTAssertEqualObjects([mergedEvents[5] objectForKey:@"collection"], @"$identify");
+    XCTAssertEqualObjects([mergedEvents[5] objectForKey:@"collection"], @"$$user");
     XCTAssertEqual([[mergedEvents[5] objectForKey:@"event_id"] intValue], 2);
     XCTAssertTrue([self key:[mergedEvents[5] objectForKey:@"properties"]
        containsInDictionary:[NSDictionary dictionaryWithObject:[NSDictionary dictionaryWithObject:@"male" forKey:@"gender"] forKey:@"$set"]]);
@@ -462,7 +462,7 @@
     NSDictionary *merged = [self.rakam mergeEventsAndIdentifys:events identifys:identifys numEvents:[dbHelper getTotalEventCount]];
     NSArray *mergedEvents = [merged objectForKey:@"events"];
     XCTAssertEqualObjects([mergedEvents[0] objectForKey:@"collection"], @"test_event");
-    XCTAssertEqualObjects([mergedEvents[1] objectForKey:@"collection"], @"$identify");
+    XCTAssertEqualObjects([mergedEvents[1] objectForKey:@"collection"], @"$$user");
 }
 
 - (void)testTruncateLongStrings {
@@ -520,7 +520,7 @@
     XCTAssertTrue([self key:[event objectForKey:@"properties"] containsInDictionary:expected]);
 
     NSDictionary *identify = [self.rakam getLastIdentify];
-    XCTAssertEqualObjects([identify objectForKey:@"collection"], @"$identify");
+    XCTAssertEqualObjects([identify objectForKey:@"collection"], @"$$user");
     XCTAssertTrue([self key:[identify objectForKey:@"properties"] containsInDictionary:[NSDictionary dictionaryWithObject:[NSDictionary dictionaryWithObject:truncString forKey:@"long_string"] forKey:@"$set"]]);
 }
 

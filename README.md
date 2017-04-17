@@ -1,27 +1,21 @@
 Rakam iOS SDK
 ====================
-An iOS SDK for tracking events and revenue to [Rakam](http://www.rakam.com).
+An iOS SDK for tracking events to [Rakam](http://www.rakam.com).
 
-[![Circle CI](https://circleci.com/gh/rakam-io/rakam-ios.svg?style=shield&circle-token=e1b2a7d2cd6dd64ac3643bc8cb2117c0ed5cbb75)](https://circleci.com/gh/rakam/Rakam-iOS/tree/master)
 [![CocoaPods](https://img.shields.io/cocoapods/v/rakam-ios.svg?style=flat)](http://cocoadocs.org/docsets/Rakam-iOS/)
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 A [demo application](https://github.com/rakam-io/iOS-Demo) is available to show a simple integration.
 
-A [demo application](https://github.com/rakam-io/iOS-Extension-Demo) is available to show a simple integration in iOS extensions.
+See our [SDK documentation](https://rawgit.com/rakam-io/rakam-ios/v4.0.1/documentation/html/index.html) for a description of all available SDK methods and classes.
 
-See our [SDK documentation](https://rawgit.com/rakam-io/rakam-ios/v4.0.0/documentation/html/index.html) for a description of all available SDK methods and classes.
-
-Our iOS SDK also supports tvOS. See [below](https://github.com/rakam-io/Rakam-ios#tvos) for more information.
+Our iOS SDK also supports tvOS. See [below](https://github.com/rakam-io/rakam-ios#tvos) for more information.
 
 # Setup #
 1. If you haven't already, go to https://rakam.com and register for an account. You will receive an API Key.
 
 2. [Download the source code](https://github.com/rakam/Rakam-iOS/archive/master.zip) and extract the zip file.
 
-    Alternatively, you can pull directly from GitHub. If you use CocoaPods, add the following line to your Podfile: `pod 'Rakam-iOS', '~> 4.0.0'`. If you are using CocoaPods, you may skip steps 3 and 4.
-
-    You also have the option to install using Carthage. If you are using Carthage, add the following line to your Cartfile: `github "rakam/Rakam-iOS"`. Just add `#import <Rakam/Rakam.h>` to import all of the Rakam header files.
+    Alternatively, you can pull directly from GitHub. If you use CocoaPods, add the following line to your Podfile: `pod 'Rakam-iOS', '~> 4.0.1'`. If you are using CocoaPods, you may skip steps 3 and 4.
 
 3. Copy the `Rakam` sub-folder into the source of your project in Xcode. Check "Copy items into destination group's folder (if needed)".
 
@@ -373,22 +367,6 @@ If you have your own system for tracking device IDs and would like to set a cust
 
 ### ARC ###
 This code will work with both ARC and non-ARC projects. Preprocessor macros are used to determine which version of the compiler is being used.
-
-### SSL pinning ###
-The SDK includes support for SSL pinning. It is enabled via a preprocessor macro.
-
-If you installed the SDK using Cocoapods, you will need to enable the preprocessor macro via your Podfile by adding this post install hook:
-```ruby
-post_install do |installer_representation|
-    installer_representation.pods_project.targets.each do |target|
-        target.build_configurations.each do |config|
-            config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)', 'RAKAM_SSL_PINNING=1']
-        end
-    end
-end
-```
-
-If you installed the SDK directly from the source, you can enable SSL pinning by adding the following preprocessor macro: `RAKAM_SSL_PINNING=1`
 
 ### iOS Extensions ###
 The SDK allows for tracking in iOS Extensions. Follow the [Setup instructions](https://github.com/rakam/rakam-ios#setup). In Step 6, instead of initializing the SDK in `application:didFinishLaunchingWithOptions:`, you initialize the SDK in your extension's `viewDidLoad` method.

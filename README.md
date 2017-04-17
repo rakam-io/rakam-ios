@@ -4,7 +4,7 @@ An iOS SDK for tracking events to [Rakam](http://www.rakam.com).
 
 [![CocoaPods](https://img.shields.io/cocoapods/v/rakam-ios.svg?style=flat)](http://cocoadocs.org/docsets/Rakam-iOS/)
 
-A [demo application](https://github.com/rakam-io/iOS-Demo) is available to show a simple integration.
+A [demo application](https://github.com/rakam-io/rakam-ios-demo) is available to show a simple integration.
 
 See our [SDK documentation](https://rawgit.com/rakam-io/rakam-ios/v4.0.1/documentation/html/index.html) for a description of all available SDK methods and classes.
 
@@ -42,18 +42,7 @@ Our iOS SDK also supports tvOS. See [below](https://github.com/rakam-io/rakam-io
 
 It's important to think about what types of events you care about as a developer. You should aim to track between 20 and 200 types of events on your site. Common event types are actions the user initiates (such as pressing a button) and events you want the user to complete (such as filling out a form, completing a level, or making a payment).
 
-Here are some resources to help you with your instrumentation planning:
-  * [Event Tracking Quick Start Guide](https://rakam.zendesk.com/hc/en-us/articles/207108137).
-  * [Event Taxonomy and Best Practices](https://rakam.zendesk.com/hc/en-us/articles/211988918).
-
-Having large amounts of distinct event types, event properties and user properties, however, can make visualizing and searching of the data very confusing. By default we only show the first:
-  * 1000 distinct event types
-  * 2000 distinct event properties
-  * 1000 distinct user properties
-
-Anything past the above thresholds will not be visualized. **Note that the raw data is not impacted by this in any way, meaning you can still see the values in the raw data, but they will not be visualized on the platform.**
-
-A single call to `logEvent` should not have more than 1000 event properties. Likewise a single call to `setUserProperties` should not have more than 1000 user properties. If the 1000 item limit is exceeded then the properties will be dropped and a warning will be logged. We have put in very conservative estimates for the event and property caps which we don’t expect to be exceeded in any practical use case. If you feel that your use case will go above those limits please reach out to support@rakam.com.
+A single call to `logEvent` should not have more than 1000 event properties. Likewise a single call to `setUserProperties` should not have more than 1000 user properties. If the 1000 item limit is exceeded then the properties will be dropped and a warning will be logged. We have put in very conservative estimates for the event and property caps which we don’t expect to be exceeded in any practical use case. If you feel that your use case will go above those limits please reach out to e@rakam.com.
 
 # Tracking Sessions #
 
@@ -242,7 +231,7 @@ out is disabled.
 
 # Tracking Revenue #
 
-The preferred method of tracking revenue for a user now is to use `logRevenueV2` in conjunction with the provided `RakamRevenue` interface. `RakamRevenue` instances will store each revenue transaction and allow you to define several special revenue properties (such as revenueType, productIdentifier, etc) that are used in Rakam dashboard's Revenue tab. You can now also add event properties to the revenue event, via the eventProperties field. These `RakamRevenue` instance objects are then passed into `logRevenueV2` to send as revenue events to Rakam servers. This allows us to automatically display data relevant to revenue on the Rakam website, including average revenue per daily active user (ARPDAU), 1, 7, 14, 30, 60, and 90 day revenue, lifetime value (LTV) estimates, and revenue by advertising campaign cohort and daily/weekly/monthly cohorts.
+The preferred method of tracking revenue for a user now is to use `logRevenue` in conjunction with the provided `RakamRevenue` interface. `RakamRevenue` instances will store each revenue transaction and allow you to define several special revenue properties (such as revenueType, productIdentifier, etc) that are used in Rakam dashboard's Revenue tab. You can now also add event properties to the revenue event, via the eventProperties field. These `RakamRevenue` instance objects are then passed into `logRevenue` to send as revenue events to Rakam servers. This allows us to automatically display data relevant to revenue on the Rakam website, including average revenue per daily active user (ARPDAU), 1, 7, 14, 30, 60, and 90 day revenue, lifetime value (LTV) estimates, and revenue by advertising campaign cohort and daily/weekly/monthly cohorts.
 
 **Important Note**: Rakam currently does not support currency conversion. All revenue data should be normalized to your currency of choice, before being sent to Rakam.
 
@@ -255,7 +244,7 @@ Each time a user generates revenue, you create a `RakamRevenue` object and fill 
 ``` objective-c
 RakamRevenue *revenue = [[[RakamRevenue revenue] setProductIdentifier:@"productIdentifier"] setQuantity:3];
 [revenue setPrice:[NSNumber numberWithDouble:3.99]];
-[[Rakam instance] logRevenueV2:revenue];
+[[Rakam instance] logRevenue:revenue];
 ```
 
 `price` is a required field. `quantity` defaults to 1 if not specified. `receipt` is required if you want to verify the revenue event. Each field has a corresponding `set` method (for example `setProductId`, `setQuantity`, etc). This table describes the different fields available:
@@ -280,7 +269,7 @@ Then after a successful purchase transaction, add the receipt data to the `Reven
 ``` objective-c
 RakamRevenue *revenue = [[[RakamRevenue revenue] setProductIdentifier:@"productIdentifier"] setQuantity:1];
 [[revenue setPrice:[NSNumber numberWithDouble:3.99]] setReceipt:receiptData];
-[[Rakam instance] logRevenueV2:revenue];
+[[Rakam instance] logRevenue:revenue];
 ```
 
 `receipt:` the receipt NSData from the app store. For details on how to obtain the receipt data, see [Apple's guide on Receipt Validation](https://developer.apple.com/library/ios/releasenotes/General/ValidateAppStoreReceipt/Chapters/ValidateRemotely.html#//apple_ref/doc/uid/TP40010573-CH104-SW1).

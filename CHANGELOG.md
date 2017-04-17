@@ -56,7 +56,7 @@
 
 ### 3.8.2 (July 11, 2016)
 
-* `productId` is no longer a required field for `Revenue` logged via `logRevenueV2`.
+* `productId` is no longer a required field for `Revenue` logged via `logRevenue`.
 * Fix bug where revenue receipt was being truncated if it was too long (exceeded 1024 characters);
 
 ## 3.8.1 (June 14, 2016)
@@ -79,7 +79,7 @@
 
 * Add helper method `getSessionId` to expose the current sessionId value.
 * Add support for setting groups for users and events. See [Readme](https://github.com/rakam/Rakam-iOS#setting-groups) for more information.
-* Add logRevenueV2 and new Revenue class to support logging revenue events with properties, and revenue type. See [Readme](https://github.com/rakam/Rakam-iOS#tracking-revenue) for more info.
+* Add logRevenue and new Revenue class to support logging revenue events with properties, and revenue type. See [Readme](https://github.com/rakam/Rakam-iOS#tracking-revenue) for more info.
 
 ## 3.6.0 (March 28, 2016)
 

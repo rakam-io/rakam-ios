@@ -280,7 +280,7 @@
 
  For validating revenue, make sure the receipt data is set on the RKMRevenue object.
 
- To track revenue from a user, create an RKMRevenue object each time the user generates revenue, and set the revenue properties (productIdentifier, price, quantity). logRevenuev2: takes in an RKMRevenue object. This allows us to automatically display data relevant to revenue on the Rakam website, including average revenue per daily active user (ARPDAU), 7, 30, and 90 day revenue, lifetime value (LTV) estimates, and revenue by advertising campaign cohort and daily/weekly/monthly cohorts.
+ To track revenue from a user, create an RKMRevenue object each time the user generates revenue, and set the revenue properties (productIdentifier, price, quantity). logRevenue: takes in an RKMRevenue object. This allows us to automatically display data relevant to revenue on the Rakam website, including average revenue per daily active user (ARPDAU), 7, 30, and 90 day revenue, lifetime value (LTV) estimates, and revenue by advertising campaign cohort and daily/weekly/monthly cohorts.
 
  @param revenue RKMRevenue object       revenue object contains all revenue information
 

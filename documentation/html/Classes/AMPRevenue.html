@@ -128,7 +128,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p><code>RakamRevenue</code> objects are a wrapper for <a href="#//api/name/revenue">revenue</a> data, which get passed to the <code>logRevenueV2</code> method to send to <a href="../Classes/Rakam.html">Rakam</a> servers.</p>
+						<p><code>RakamRevenue</code> objects are a wrapper for <a href="#//api/name/revenue">revenue</a> data, which get passed to the <code>logRevenue</code> method to send to <a href="../Classes/Rakam.html">Rakam</a> servers.</p>
 
 <p><strong>Note:</strong> <a href="#//api/name/price">price</a> is a required field. If <a href="#//api/name/quantity">quantity</a> is not specified, then defaults to 1.</p>
 
@@ -140,7 +140,7 @@
 
 <pre><code>RakamRevenue *revenue = [[[RakamRevenue revenue] setProductIdentifier:@"productIdentifier"] setQuantity:3];
 [revenue setPrice:[NSNumber numberWithDouble:3.99]];
-[[Rakam instance] logRevenueV2:revenue];
+[[Rakam instance] logRevenue:revenue];
 </code></pre>
 
 <p>See <a href="https://github.com/rakam/Rakam-iOS#tracking-revenue">Tracking Revenue</a> for more information about logging Revenue.</p>

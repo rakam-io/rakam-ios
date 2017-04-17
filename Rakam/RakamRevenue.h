@@ -7,7 +7,7 @@
 //
 
 /**
- `RKMRevenue` objects are a wrapper for revenue data, which get passed to the `logRevenueV2` method to send to Rakam servers.
+ `RKMRevenue` objects are a wrapper for revenue data, which get passed to the `logRevenue` method to send to Rakam servers.
 
  **Note:** price is a required field. If quantity is not specified, then defaults to 1.
 
@@ -19,7 +19,7 @@
 
     RKMRevenue *revenue = [[[RKMRevenue revenue] setProductIdentifier:@"productIdentifier"] setQuantity:3];
     [revenue setPrice:[NSNumber numberWithDouble:3.99]];
-    [[Rakam instance] logRevenueV2:revenue];
+    [[Rakam instance] logRevenue:revenue];
 
  See [Tracking Revenue](https://github.com/amplitude/Rakam-iOS#tracking-revenue) for more information about logging Revenue.
  */

@@ -585,8 +585,7 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
                 @"library": @{
                         @"name": kRKMLibrary,
                         @"version": kRKMVersion
-                },
-                @"uuid": [RakamUtils generateUUID]
+                }
         };
 
         [event setValue:api forKey:@"api"];
@@ -639,8 +638,7 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
 }
 
 - (void)annotateEvent:(NSMutableDictionary *)eventProperties {
-    NSString *uuid = [[NSUUID UUID] UUIDString];
-    [eventProperties setValue:uuid forKey:@"_id"];
+    [eventProperties setValue:[RakamUtils generateUUID] forKey:@"_id"];
     [eventProperties setValue:_userId forKey:@"_user"];
     [eventProperties setValue:_deviceId forKey:@"_device_id"];
     [eventProperties setValue:kRKMPlatform forKey:@"_platform"];

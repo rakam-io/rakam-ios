@@ -286,24 +286,6 @@
     XCTAssertEqual([self.databaseHelper getEventCount], 0);
 }
 
-- (void)testUUIDInEvent {
-    [self.rakam setEventUploadThreshold:5];
-    [self.rakam logEvent:@"event1"];
-    [self.rakam logEvent:@"event2"];
-    [self.rakam flushQueue];
-
-    XCTAssertEqual([self.rakam queuedEventCount], 2);
-    NSArray *events = [[RakamDatabaseHelper getDatabaseHelper] getEvents:-1 limit:-1];
-    XCTAssertEqual(2, [[events[1] objectForKey:@"event_id"] intValue]);
-
-    id event1Uuid = [((NSDictionary *) [events[0] objectForKey:@"api"]) objectForKey:@"uuid"];
-    id event2Uuid = [((NSDictionary *) [events[1] objectForKey:@"api"]) objectForKey:@"uuid"];
-
-    XCTAssertNotNil(event1Uuid);
-    XCTAssertNotNil(event2Uuid);
-    XCTAssertNotEqual(event1Uuid, event2Uuid);
-}
-
 - (void)testIdentify {
     RakamDatabaseHelper *dbHelper = [RakamDatabaseHelper getDatabaseHelper];
     [self.rakam setEventUploadThreshold:2];

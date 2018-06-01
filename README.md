@@ -6,7 +6,7 @@ An iOS SDK for tracking events to [Rakam](http://www.rakam.com).
 
 A [demo application](https://github.com/rakam-io/rakam-ios-demo) is available to show a simple integration.
 
-See our [SDK documentation](https://rawgit.com/rakam-io/rakam-ios/v4.0.2/documentation/html/index.html) for a description of all available SDK methods and classes.
+See our [SDK documentation](https://rawgit.com/rakam-io/rakam-ios/v4.0.3/documentation/html/index.html) for a description of all available SDK methods and classes.
 
 Our iOS SDK also supports tvOS. See [below](https://github.com/rakam-io/rakam-ios#tvos) for more information.
 
@@ -15,7 +15,7 @@ Our iOS SDK also supports tvOS. See [below](https://github.com/rakam-io/rakam-io
 
 2. [Download the source code](https://github.com/rakam/Rakam-iOS/archive/master.zip) and extract the zip file.
 
-    Alternatively, you can pull directly from GitHub. If you use CocoaPods, add the following line to your Podfile: `pod 'Rakam-iOS', '~> 4.0.2'`. If you are using CocoaPods, you may skip steps 3 and 4.
+    Alternatively, you can pull directly from GitHub. If you use CocoaPods, add the following line to your Podfile: `pod 'Rakam-iOS', '~> 4.0.3'`. If you are using CocoaPods, you may skip steps 3 and 4.
 
 3. Copy the `Rakam` sub-folder into the source of your project in Xcode. Check "Copy items into destination group's folder (if needed)".
 

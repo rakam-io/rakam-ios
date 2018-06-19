@@ -401,6 +401,12 @@ static NSString *const GET_VALUE = @"SELECT %@, %@ FROM %@ WHERE %@ = ?;";
 
             NSMutableDictionary *event = [eventImmutable mutableCopy];
             [event setValue:[NSNumber numberWithLongLong:eventId] forKey:@"event_id"];
+
+            NSMutableDictionary *copied = [[event objectForKey:@"properties"] mutableCopy];
+            [copied setValue:[NSNumber numberWithLongLong:eventId] forKey:@"_local_id"];
+
+            [event setValue:copied forKey:@"properties"];
+
             [events addObject:event];
             SAFE_ARC_RELEASE(event);
         }

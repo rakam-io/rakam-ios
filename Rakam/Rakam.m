@@ -454,15 +454,17 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
             }
         }];
 
-        UIApplication *app = [self getSharedApplication];
-        if (app != nil) {
-            UIApplicationState state = app.applicationState;
-            if (state != UIApplicationStateBackground) {
-                // If this is called while the app is running in the background, for example
-                // via a push notification, don't call enterForeground
-                [self enterForeground];
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            UIApplication *app = [self getSharedApplication];
+            if (app != nil) {
+                UIApplicationState state = app.applicationState;
+                if (state != UIApplicationStateBackground) {
+                    // If this is called while the app is running in the background, for example
+                    // via a push notification, don't call enterForeground
+                    [self enterForeground];
+                }
             }
-        }
+        }];
         _initialized = YES;
     }
 }
@@ -573,7 +575,7 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
             [realEventProperties addEntriesFromDictionary:[self truncate:
                     [RakamUtils makeJSONSerializable:[self replaceWithEmptyJSON:eventProperties]]]];
 
-            [realEventProperties setValue:[NSNumber numberWithLongLong:outOfSession ? -1 : _sessionId] forKey:@"session_id"];
+            [realEventProperties setValue:[NSNumber numberWithLongLong:outOfSession ? -1 : _sessionId] forKey:@"_session_id"];
 
             [self annotateEvent:realEventProperties];
         }
@@ -641,6 +643,7 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
     [eventProperties setValue:[RakamUtils generateUUID] forKey:@"_id"];
     [eventProperties setValue:_userId forKey:@"_user"];
     [eventProperties setValue:_deviceId forKey:@"_device_id"];
+    [eventProperties setValue:[NSNumber numberWithBool:true] forKey:@"_ip"];
     [eventProperties setValue:kRKMPlatform forKey:@"_platform"];
     [eventProperties setValue:_deviceInfo.appVersion forKey:@"_version_name"];
     [eventProperties setValue:_deviceInfo.osName forKey:@"_os_name"];
@@ -655,11 +658,11 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
 
     NSString *advertiserID = _deviceInfo.advertiserID;
     if (advertiserID) {
-        [apiProperties setValue:advertiserID forKey:@"ios_idfa"];
+        [apiProperties setValue:advertiserID forKey:@"_ios_idfa"];
     }
     NSString *vendorID = _deviceInfo.vendorID;
     if (vendorID) {
-        [apiProperties setValue:vendorID forKey:@"ios_idfv"];
+        [apiProperties setValue:vendorID forKey:@"_ios_idfv"];
     }
 
     if (_lastKnownLocation != nil) {
@@ -825,7 +828,7 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
 
             // case 3: need to compare sequence numbers
         } else {
-            // events logged before v3.2.0 won't have sequeunce number, put those first
+            // events logged before v3.2.0 won't have sequence number, put those first
             event = SAFE_ARC_RETAIN(events[0]);
             identify = SAFE_ARC_RETAIN(identifys[0]);
             if ([event objectForKey:SEQUENCE_NUMBER] == nil ||

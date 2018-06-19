@@ -2,7 +2,7 @@ Rakam iOS SDK
 ====================
 An iOS SDK for tracking events to [Rakam](http://www.rakam.com).
 
-[![CocoaPods](https://img.shields.io/cocoapods/v/rakam-ios.svg?style=flat)](http://cocoadocs.org/docsets/Rakam-iOS/)
+[![CocoaPods](https://img.shields.io/cocoapods/v/rakam-ios.svg?style=flat)](https://cocoapods.org/pods/Rakam-iOS)
 
 A [demo application](https://github.com/rakam-io/rakam-ios-demo) is available to show a simple integration.
 

@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name                   = "Rakam-iOS"
-  s.version                = "4.0.3"
+  s.version                = "4.0.4"
   s.summary                = "Rakam mobile analytics iOS SDK."
   s.homepage               = "https://rakam.io"
   s.license                = { :type => "MIT" }
   s.author                 = { "Rakam" => "emre@rakam.io" }
-  s.source                 = { :git => "https://github.com/rakam-io/rakam-ios.git", :tag => "v4.0.3" }
+  s.source                 = { :git => "https://github.com/rakam-io/rakam-ios.git", :tag => "v4.0.4" }
   s.ios.deployment_target  = '6.0'
   s.tvos.deployment_target = '9.0'
   s.source_files           = 'Rakam/*.{h,m}'

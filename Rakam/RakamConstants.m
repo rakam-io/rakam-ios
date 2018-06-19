@@ -4,7 +4,7 @@
 #import "RakamConstants.h"
 
 NSString *const kRKMLibrary = @"rakam-ios";
-NSString *const kRKMVersion = @"4.0.3";
+NSString *const kRKMVersion = @"4.0.4";
 NSString *const kRKMDefaultInstance = @"$default_instance";
 const int kRKMApiVersion = 3;
 const int kRKMDBVersion = 3;

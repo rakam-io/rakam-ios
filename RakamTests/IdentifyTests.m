@@ -273,7 +273,7 @@
 }
 
 - (void)testMakeJSONSerializableProperty {
-    NSString *urlString = @"https://rakam.com";
+    NSString *urlString = @"https://rakam.io";
     NSString *key = @"url";
     NSURL *url = [NSURL URLWithString:urlString];
 

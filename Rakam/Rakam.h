@@ -138,7 +138,7 @@
 
  **Note:** this is required before you can log any events.
 
- @param apiKey Your Rakam key obtained from your dashboard at https://rakam.com/settings
+ @param apiKey Your Rakam key obtained from your dashboard at https://rakam.io/settings
  */
 - (void)initializeApiKey:(NSURL *)apiUrl :(NSString *)apiKey;
 
@@ -149,7 +149,7 @@
 
  **Note:** this is required before you can log any events.
 
- @param apiKey Your Rakam key obtained from your dashboard at https://rakam.com/settings
+ @param apiKey Your Rakam key obtained from your dashboard at https://rakam.io/settings
 
  @param userId If your app has its own login system that you want to track users with, you can set the userId.
 
